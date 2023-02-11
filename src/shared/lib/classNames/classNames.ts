@@ -5,11 +5,11 @@ export function classNames(cls: string, mods:Mods = {}, additional: string[] = [
         cls,
         ...additional.filter(Boolean),
         ...Object.entries(mods)
-           .reduce((result, [className, mod]) => {
-               mod ? result.push(className) : result
-               return result
-           }, [])
-    ].join(' ')
+            .reduce((result, [className, mod]) => {
+                if (mod) {
+                    result.push(className);
+                }
+                return result;
+            }, []),
+    ].join(' ');
 }
-
-
