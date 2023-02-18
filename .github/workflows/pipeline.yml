@@ -27,6 +27,6 @@ jobs:
       - name: Unit test
         run: npm run test:unit
       - name: Loki test
-        run: test:ui:ci
+        run: npm run test:ui:ci
 
 
