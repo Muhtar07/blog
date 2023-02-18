@@ -1,23 +1,24 @@
-
-name: Pipeline
+name: linting, testing, building
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 jobs:
-  build:
+  pipeline:
     runs-on: 'ubuntu-latest'
     strategy:
       matrix:
         node-version: [17.x]
     steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Build
+      - name: install modules
+        run: npm install
+      - name: Build production project
         run: npm run build:prod
       - name: Lint typescript
         run: npm run lint:ts
