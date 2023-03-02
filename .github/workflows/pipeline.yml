@@ -6,29 +6,35 @@ on:
     branches: [ main ]
 jobs:
   pipeline:
-    runs-on: 'macos-latest'
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [ 16.x ]
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Staring Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - name: install modules
         run: npm install
-      - name: Build production project
+      - name: build production project
         run: npm run build:prod
-      - name: Lint typescript
+        if: always()
+      - name: linting typescript
         run: npm run lint:ts
-      - name: Lint scss
+        if: always()
+      - name: linting css
         run: npm run lint:scss
-      - name: Unit test
+      - name: unit testing
+        if: always()
         run: npm run test:unit
-      - name: Storybook build
+      - name: build storybook
         run: npm run storybook:build
-      - name: Loki test
+        if: always()
+      - name: screenshot testing
         run: npm run test:ui:ci
+        if: always()
 
 
