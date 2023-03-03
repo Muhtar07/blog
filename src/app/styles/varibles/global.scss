@@ -12,4 +12,12 @@
     --navbar-height: 50px;
     --sidebar-width: 300px;
     --side-bar-collapsed: 80px;
+
+    // прозрачный bg
+
+    --overlay-color: rgba(0 0 0 / 60%);
+
+    // z-index
+
+    --modal-z-index: 10;
 }
