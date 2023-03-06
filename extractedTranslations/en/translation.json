@@ -1,7 +1,9 @@
 {
+  "": "",
   "bghbefrghbjnsdfjgnd jgnvjdfnklvjnsfjdnvdfjksn nfvjkdfmnlnskjvndsfknvjndfs nmfdjklsnfvjnfdjn": "bghbefrghbjnsdfjgnd jgnvjdfnklvjnsfjdnvdfjksn nfvjkdfmnlnskjvndsfknvjndfs nmfdjklsnfvjnfdjn",
   "Войти": "Войти",
   "Вызвать ошибку": "Вызвать ошибку",
+  "Выйти": "Выйти",
   "Главная страница": "Главная страница",
   "Логин": "Логин",
   "О нас": "О нас",
@@ -13,5 +15,6 @@
   "Прибавить": "",
   "Произошла ошибка": "Произошла ошибка",
   "Страница не найдена": "Страница не найдена",
+  "Форма авторизации": "",
   "язык": "язык"
 }

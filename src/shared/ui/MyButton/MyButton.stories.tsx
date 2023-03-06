@@ -141,3 +141,11 @@ BackgroundInverted.args = {
     children: 'TEST',
 
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+    theme: ButtonTheme.BACKGROUND_INVERTED,
+    children: 'TEST',
+    disabled: true,
+
+};

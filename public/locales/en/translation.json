@@ -12,7 +12,9 @@
   "Прибавить": "Increment",
   "Отнять": "Decrement",
   "Логин" : "Login",
-  "Пароль" : "Password"
+  "Пароль" : "Password",
+  "Форма авторизации": "Authorization form",
+  "Выйти": "Logout"
 
 
 }
