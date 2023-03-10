@@ -6,17 +6,19 @@ import { Sidebar } from 'widgets/Sidebar';
 import React, { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { userActions } from 'entities/User';
+import { useTheme } from 'app/providers/ThemeProvider';
 
 const App = () => {
     const dispatch = useDispatch();
+    const { theme } = useTheme();
 
     useEffect(() => {
         dispatch(userActions.initAuthData());
     }, [dispatch]);
 
     return (
-        <div className={classNames('app', {}, [])}>
-            <Suspense fallback={<div />}>
+        <div className={classNames('app', {}, [theme])}>
+            <Suspense fallback="">
                 <Navbar />
                 <div className="content-page">
                     <Sidebar />

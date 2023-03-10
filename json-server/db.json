@@ -10,7 +10,19 @@
   "comments": [
     { "id": "1", "body": "some comment", "postId": "1" }
   ],
-  "profile": { "name": "typicode" },
+  "profile": {
+    "firstname": "Мухтар",
+    "lastname": "Беканов",
+    "age": 31,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Moscow",
+    "username": "admin",
+    "avatar": "https://yandex.ru/images/search?text=fdfnfh%20d%20vk%20png&from=tabbar&pos=4&img_url=http%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fdownload_245371.png&rpt=simage&lr=213"
+  },
+
+
+
   "users": [
     {
       "id": "1",

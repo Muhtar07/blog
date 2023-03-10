@@ -16,7 +16,7 @@ interface MyInputProps extends HTMLInputProps {
 export const MyInput = memo((props: MyInputProps) => {
     const {
         className,
-        value,
+        value = '',
         onChange,
         type = 'text',
         placeholder,
@@ -49,8 +49,8 @@ export const MyInput = memo((props: MyInputProps) => {
     };
 
     const onSelect = (e: any) => {
-        setCaretPosition(e?.target?.selectionStart > value?.length
-            ? value?.length || 0 : e?.target?.selectionStart || 0);
+        setCaretPosition(e?.target?.selectionStart > value.length
+            ? value.length : e?.target?.selectionStart || 0);
     };
 
     return (
