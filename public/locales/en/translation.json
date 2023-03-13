@@ -15,5 +15,9 @@
   "Пароль" : "Password",
   "Форма авторизации": "Authorization form",
   "Выйти": "Logout",
-  "PROFILE PAGE": "PROFILE PAGE"
+  "PROFILE PAGE": "PROFILE PAGE",
+  "Укажите валюту": "Specify the currency",
+  "Укажите страну": "Specify the country",
+  "Профиль пользователя" : "User Profile"
+
 }

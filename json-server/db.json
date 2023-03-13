@@ -1,28 +1,53 @@
 {
   "posts": [
-    { "id": "1", "title": "json-server 1", "author": "typicode" },
-    { "id": "2", "title": "json-server 2", "author": "typicode" },
-    { "id": "3", "title": "json-server 3", "author": "typicode" },
-    { "id": "4", "title": "json-server 4", "author": "typicode" },
-    { "id": "5", "title": "json-server 5", "author": "typicode" },
-    { "id": "6", "title": "json-server 6", "author": "typicode" }
+    {
+      "id": "1",
+      "title": "json-server 1",
+      "author": "typicode"
+    },
+    {
+      "id": "2",
+      "title": "json-server 2",
+      "author": "typicode"
+    },
+    {
+      "id": "3",
+      "title": "json-server 3",
+      "author": "typicode"
+    },
+    {
+      "id": "4",
+      "title": "json-server 4",
+      "author": "typicode"
+    },
+    {
+      "id": "5",
+      "title": "json-server 5",
+      "author": "typicode"
+    },
+    {
+      "id": "6",
+      "title": "json-server 6",
+      "author": "typicode"
+    }
   ],
   "comments": [
-    { "id": "1", "body": "some comment", "postId": "1" }
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": "1"
+    }
   ],
   "profile": {
     "firstname": "Мухтар",
     "lastname": "Беканов",
     "age": 31,
-    "currency": "RUB",
-    "country": "Russia",
+    "currency": "USD",
+    "country": "USA",
     "city": "Moscow",
     "username": "admin",
-    "avatar": "https://yandex.ru/images/search?text=fdfnfh%20d%20vk%20png&from=tabbar&pos=4&img_url=http%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fdownload_245371.png&rpt=simage&lr=213"
+    "avatar": "https://cdn.onlinewebfonts.com/svg/download_263599.png"
   },
-
-
-
   "users": [
     {
       "id": "1",
@@ -30,5 +55,4 @@
       "password": "123"
     }
   ]
-
 }

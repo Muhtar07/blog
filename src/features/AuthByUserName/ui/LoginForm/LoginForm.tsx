@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { ButtonTheme, MyButton } from 'shared/ui/MyButton/MyButton';
 import { MyInput } from 'shared/ui/MyInput/MyInput';
 import { useSelector } from 'react-redux';
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
@@ -47,11 +47,23 @@ const LoginForm = memo((props: LoginFormProps) => {
 
     const onLoginClick = useCallback(async () => {
         const result = await dispatch(loginByUsername({ username, password }));
-
         if (result.meta.requestStatus === 'fulfilled') {
             onSuccess();
         }
     }, [dispatch, password, username, onSuccess]);
+
+    const onKeyDown = useCallback(async (e: KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            await onLoginClick();
+        }
+    }, [onLoginClick]);
+
+    useEffect(() => {
+        window.addEventListener('keydown', onKeyDown);
+        return () => {
+            window.removeEventListener('keydown', onKeyDown);
+        };
+    }, [onKeyDown]);
 
     return (
         <DynamicModuleLoader reducers={initialReducers}>

@@ -1,0 +1,19 @@
+{
+  "Серверная ошибка при сохранении" : "Server error when saving",
+  "Неправильный формат аватара" : "Incorrect avatar format",
+  "Фамилия и имя обязательны для заполнения" : "Last name and first name are required",
+  "Укажите город" : "Specify the city",
+  "Укажите страну" : "Specify the country",
+  "Укажите ваш возраст" : "Specify your age",
+  "Данные не указаны" : "Data is not specified",
+  "Ваше имя" : "An error has occurred",
+  "Ваша фамилия" : "Failed to upload image",
+  "Ваш возраст" : "Your name",
+  "Ваш username" : "Your last name",
+  "Ваш город" : "Your age",
+  "Ваш аватар" : "Your username",
+  "Профиль": "Profile",
+  "Сохранить": "Save",
+  "Отменить":  "Cancel",
+  "Редактировать" : "Edit"
+}
