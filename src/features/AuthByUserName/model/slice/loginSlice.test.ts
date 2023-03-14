@@ -1,8 +1,8 @@
 import { loginActions, loginReducer } from 'features/AuthByUserName/model/slice/loginSlice';
 import { LoginSchema } from '../types/loginSchema';
 
-describe('loginSlice.test', () => {
-    test('test set username', () => {
+describe('loginSlice.tests', () => {
+    test('tests set username', () => {
         const state: DeepPartial<LoginSchema> = {
             username: '1223',
         };
@@ -12,7 +12,7 @@ describe('loginSlice.test', () => {
             loginActions.setUserName('1223'),
         )).toEqual({ username: '1223' });
     });
-    test('test set password', () => {
+    test('tests set password', () => {
         const state: DeepPartial<LoginSchema> = {
             password: '1223',
         };

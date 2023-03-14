@@ -26,6 +26,10 @@ export const putProfileData = createAsyncThunk<Profile, void, ThunkConfig<Valida
         try {
             const response = await api.put<Profile>('/profile', formData);
 
+            if (!response.data) {
+                throw new Error();
+            }
+
             return response?.data;
         } catch (e) {
             console.log(e);

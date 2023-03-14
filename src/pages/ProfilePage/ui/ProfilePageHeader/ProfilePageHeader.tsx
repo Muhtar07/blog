@@ -30,7 +30,9 @@ export const ProfilePageHeader = memo((props: ProfilePageHeaderProps) => {
 
     const onSave = useCallback(async () => {
         if (form) {
-            await dispatch(putProfileData());
+            if (__PROJECT__ !== 'storybook') {
+                await dispatch(putProfileData());
+            }
         }
     }, [dispatch, form]);
 

@@ -1,7 +1,7 @@
 import { StateSchema } from 'app/providers/StoreProvider';
 import { getCounterValue } from './getCounterValue';
 
-describe('getCounterValue.test', () => {
+describe('getCounterValue.tests', () => {
     test('should return counter value', () => {
         const state: DeepPartial<StateSchema> = {
             counter: {

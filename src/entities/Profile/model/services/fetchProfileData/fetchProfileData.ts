@@ -15,10 +15,14 @@ export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<stri
         try {
             const response = await api.get<Profile>('/profile');
 
+            if (!response.data) {
+                throw new Error();
+            }
+
             return response?.data;
         } catch (e) {
             console.log(e);
-            return rejectWithValue(ValidateProfileError.SERVER_ERROR);
+            return rejectWithValue('error');
         }
     },
 );
