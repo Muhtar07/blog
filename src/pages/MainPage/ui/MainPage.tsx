@@ -11,4 +11,4 @@ const MainPage = memo(() => {
     );
 });
 
-export default MainPage;
+export default memo(MainPage);

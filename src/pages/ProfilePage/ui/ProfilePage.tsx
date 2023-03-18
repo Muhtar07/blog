@@ -128,4 +128,4 @@ const ProfilePage = memo((props: ProfilePageProps) => {
     );
 });
 
-export default ProfilePage;
+export default memo(ProfilePage);
