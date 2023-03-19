@@ -4,6 +4,7 @@ import { AppLink } from 'shared/ui/AppLink/AppLink';
 import React, { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { Icon } from 'shared/ui/Icon/Icon';
 import cls from './SidebarItem.module.scss';
 import { SidebarItemType } from '../../model/items';
 
@@ -21,7 +22,7 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
     const {
         item: {
             path,
-            Icon,
+            IconLink,
             text,
             authOnly,
         },
@@ -42,8 +43,13 @@ export const SidebarItem = memo((props: SidebarItemProps) => {
             to={path}
             className={classNames(cls.SidebarItem, mods, [className])}
         >
+
             <Icon
+                Svg={IconLink}
+                height={32}
+                width={32}
                 className={cls.icon}
+                inverted
             />
             <span
                 className={cls.link}

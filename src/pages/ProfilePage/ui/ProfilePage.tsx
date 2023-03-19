@@ -95,7 +95,7 @@ const ProfilePage = memo((props: ProfilePageProps) => {
     } = props;
 
     return (
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames(cls.ProfilePage, {}, [className])}>
                 <ProfilePageHeader />
                 {

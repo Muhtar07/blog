@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
-import { ValidateProfileError } from 'entities/Profile';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Profile } from '../../types/profile';
 
 export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
@@ -13,7 +13,7 @@ export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<stri
             rejectWithValue,
         } = thinkApi;
         try {
-            const response = await api.get<Profile>('/profile');
+            const response = await api.get<Profile>(RoutePath.profile);
 
             if (!response.data) {
                 throw new Error();

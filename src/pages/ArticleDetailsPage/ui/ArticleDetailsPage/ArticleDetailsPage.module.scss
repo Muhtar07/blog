@@ -1,2 +1,7 @@
-.ArticleDetailsPage {
+.articleNotFound {
+    width: 100%;
+    height: calc(100vh - var(--navbar-height));
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }

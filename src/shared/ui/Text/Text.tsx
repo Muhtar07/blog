@@ -22,7 +22,7 @@ export enum TextAlign {
 
 interface TextProps {
     className?: string;
-    text: string,
+    text?: string,
     theme?: TextTheme,
     size?: TextSize
     textAlign?: TextAlign

@@ -8,30 +8,30 @@ import ArticleIcon from 'shared/assets/icons/artcile.svg';
 export interface SidebarItemType {
     path: string,
     text: string
-    Icon: React.VFC <React.SVGProps <SVGSVGElement>>;
+    IconLink: React.VFC <React.SVGProps <SVGSVGElement>>;
     authOnly?:boolean
 }
 
 export const SideBarItemsList: SidebarItemType[] = [
     {
         path: RoutePath.main,
-        Icon: MainIcon,
+        IconLink: MainIcon,
         text: 'Главная страница',
     },
     {
         path: RoutePath.about,
-        Icon: AboutIcon,
+        IconLink: AboutIcon,
         text: 'О нас',
     },
     {
         path: RoutePath.profile,
-        Icon: ProfileIcon,
+        IconLink: ProfileIcon,
         text: 'Профиль пользователя',
         authOnly: true,
     },
     {
         path: RoutePath.articles,
-        Icon: ArticleIcon,
+        IconLink: ArticleIcon,
         text: 'Статьи',
         authOnly: true,
     },

@@ -1,0 +1,35 @@
+.ArticleDetails {
+    .avatar {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .date,
+    .views {
+        margin-top: 5px;
+        display: flex;
+        align-items: center;
+    }
+
+    .base {
+        margin-top: 20px;
+        display: flex;
+    }
+
+    .icon {
+        margin-right: 10px;
+    }
+
+    .skeletonViews {
+        margin-top: 20px;
+    }
+
+    .title,
+    .subtitle {
+        margin-top: 10px;
+    }
+
+    .block {
+        margin-bottom: 16px;
+    }
+}
