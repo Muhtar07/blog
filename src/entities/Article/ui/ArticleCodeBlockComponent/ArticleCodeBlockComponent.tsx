@@ -20,18 +20,20 @@ export const ArticleCodeBlockComponent = memo((props: ArticleCodeBlockComponentP
     }, [text]);
 
     return (
-        <pre className={classNames(cls.ArticleCodeBlockComponent)}>
-            <MyButton
-                theme={ButtonTheme.CLEAR}
-                onClick={handlerCopyButton}
-                className={cls.copyBtn}
-                square
-            >
-                <Icon Svg={Copy} width={32} height={32} stroke fillNone />
-            </MyButton>
-            <code>
-                {text}
-            </code>
-        </pre>
+        <div className={classNames(cls.ArticleCodeBlockComponent, {}, [className])}>
+            <Icon Svg={Copy} width={32} height={32} stroke fillNone className={cls.copyBtn} />
+            <pre className={cls.codeContainer}>
+                <MyButton
+                    theme={ButtonTheme.CLEAR}
+                    onClick={handlerCopyButton}
+                    className={cls.copyBtn}
+                    square
+                />
+                <code>
+                    {text}
+                </code>
+            </pre>
+        </div>
+
     );
 });

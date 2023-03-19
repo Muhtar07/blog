@@ -52,7 +52,16 @@
     {
       "id": "1",
       "username": "admin",
-      "password": "123"
+      "password": "123",
+      "role":  "ADMIN",
+      "avatar": "https://ddcollege.in/admin/dist/img/index.png"
+    },
+    {
+      "id": "2",
+      "username": "user",
+      "password": "123",
+      "role":  "USER",
+      "avatar": "https://psn-rsc.prod.dl.playstation.net/psn-rsc/avatar/UP2136/CUSA02727_00-AV00000000000068_C5B38E353514AF8679CC_l.png"
     }
   ],
   "articles": [

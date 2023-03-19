@@ -1,6 +1,9 @@
 .ArticleCodeBlockComponent {
-    border: 2px solid var(--inverted-primary-color);
     position: relative;
+}
+
+.codeContainer {
+    border: 2px solid var(--inverted-primary-color);
     padding: 20px;
     overflow-x: auto;
     margin-bottom: 15px;

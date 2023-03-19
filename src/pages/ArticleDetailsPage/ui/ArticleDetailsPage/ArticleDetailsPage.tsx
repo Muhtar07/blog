@@ -1,26 +1,48 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
+
+import { useSelector } from 'react-redux';
+import { CommentList } from 'entities/Comment';
+import { memo } from 'react';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import {
+    fetchCommentsByArticleId,
+} from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { getArticleCommentsError, getArticleCommentsIsLoading } from '../../model/selectors/commets';
 import cls from './ArticleDetailsPage.module.scss';
+import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices/articleDetailsCommentSlice';
 
 interface ArticleDetailsPageProps {
     className?: string;
 }
 
+const reducers: ReducersList = {
+    articleDetailsComment: articleDetailsCommentsReducer,
+};
+
 const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const { t } = useTranslation('article-details');
+    const comments = useSelector(getArticleComments.selectAll);
+    const commentIsLoading = useSelector(getArticleCommentsIsLoading);
+    const commentError = useSelector(getArticleCommentsError);
+    const dispatch = useAppDispatch();
 
     const {
         className,
     } = props;
 
     const { id } = useParams<{id: string}>();
-    console.log(id);
+
+    useInitialEffect(() => {
+        dispatch(fetchCommentsByArticleId(id));
+    });
 
     if (!id) {
         return (
@@ -36,9 +58,28 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     }
 
     return (
-        <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-            <ArticleDetails id={id} />
-        </div>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                <ArticleDetails id={id} />
+                <Text text={t('Комментарии')} size={TextSize.XL} theme={TextTheme.PRIMARY} />
+                {commentError
+                    ? (
+                        <Text
+                            text={commentError}
+                            textAlign={TextAlign.CENTER}
+                            size={TextSize.L}
+                            theme={TextTheme.ERROR}
+                        />
+                    )
+                    : (
+                        <CommentList
+                            isLoading={commentIsLoading}
+                            comments={comments}
+                        />
+                    )}
+
+            </div>
+        </DynamicModuleLoader>
     );
 };
 

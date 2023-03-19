@@ -91,22 +91,32 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                     border="50%"
                 />
                 <Skeleton
-                    className={cls.date}
+                    className={cls.title}
                     width={400}
                     height={35}
                 />
                 <Skeleton
-                    className={cls.views}
-                    width={600}
+                    className={cls.subtitle}
+                    width={300}
                     height={30}
                 />
                 <Skeleton
-                    className={cls.base}
+                    className={cls.views}
+                    width={200}
+                    height={20}
+                />
+                <Skeleton
+                    className={cls.date}
+                    width={200}
+                    height={20}
+                />
+                <Skeleton
+                    className={cls.block}
                     width="100%"
                     height={800}
                 />
                 <Skeleton
-                    className={cls.base}
+                    className={cls.block}
                     width="100%"
                     height={300}
                 />
@@ -130,7 +140,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                     alt={t('Аватар')}
                     size={200}
                 />
-                <Text text={article?.title} size={TextSize.XL} className={cls.title} />
+                <Text text={article?.title} size={TextSize.XL} className={cls.title} theme={TextTheme.PRIMARY} />
                 <Text text={article?.subtitle} size={TextSize.L} className={cls.subtitle} />
                 <div className={cls.views}>
                     <Icon

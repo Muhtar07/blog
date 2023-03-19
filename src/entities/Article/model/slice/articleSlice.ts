@@ -12,11 +12,7 @@ const initialState: ArticleDetailsSchema = {
 export const articleSlice = createSlice({
     name: 'article',
     initialState,
-    reducers: {
-        setArticleError: (state) => {
-            state.error = 'Не указан id статьи';
-        },
-    },
+    reducers: {},
 
     extraReducers: (builder) => {
         builder
