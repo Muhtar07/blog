@@ -4,7 +4,8 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { SideBarItemsList } from 'widgets/Sidebar/model/items';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import MainIcon from 'shared/assets/icons/main-icon.svg';
 import { SidebarItem } from './SidebarItem';
 
 export default {
@@ -20,7 +21,11 @@ const Template: ComponentStory<typeof SidebarItem> = (args) => <SidebarItem {...
 export const Light = Template.bind({});
 Light.args = {
     collapsed: false,
-    item: SideBarItemsList[0],
+    item: {
+        path: RoutePath.main,
+        IconLink: MainIcon,
+        text: 'Главная страница',
+    },
 };
 
 Light.decorators = [StoreDecorator({
@@ -30,7 +35,11 @@ Light.decorators = [StoreDecorator({
 export const LightCollapsed = Template.bind({});
 LightCollapsed.args = {
     collapsed: true,
-    item: SideBarItemsList[0],
+    item: {
+        path: RoutePath.main,
+        IconLink: MainIcon,
+        text: 'Главная страница',
+    },
 };
 
 LightCollapsed.decorators = [StoreDecorator({
@@ -41,7 +50,11 @@ export const Dark = Template.bind({});
 
 Dark.args = {
     collapsed: true,
-    item: SideBarItemsList[0],
+    item: {
+        path: RoutePath.main,
+        IconLink: MainIcon,
+        text: 'Главная страница',
+    },
 };
 
 Dark.decorators = [ThemeDecorator(Theme.DARK), StoreDecorator({
