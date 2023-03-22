@@ -17,6 +17,8 @@ import { useSelector } from 'react-redux';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
+import { useParams } from 'react-router-dom';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -31,6 +33,7 @@ const reducers: ReducersList = {
 const ProfilePage = memo((props: ProfilePageProps) => {
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
+    const { id } = useParams<{id: string}>();
 
     const isLoading = useSelector(getProfileIsLoading);
     const readonly = useSelector(getProfileReadonly);
@@ -48,6 +51,12 @@ const ProfilePage = memo((props: ProfilePageProps) => {
         [ValidateProfileError.NO_DATA]: t('Данные не указаны'),
 
     };
+
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
+        }
+    });
 
     const updateFirstname = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ firstname: value }));
@@ -82,12 +91,6 @@ const ProfilePage = memo((props: ProfilePageProps) => {
 
     const updateCountry = useCallback((country?: Country) => {
         dispatch(profileActions.updateProfile({ country }));
-    }, [dispatch]);
-
-    useEffect(() => {
-        if (__PROJECT__ !== 'storybook') {
-            dispatch(fetchProfileData());
-        }
     }, [dispatch]);
 
     const {

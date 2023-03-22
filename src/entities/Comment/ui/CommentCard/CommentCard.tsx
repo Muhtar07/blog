@@ -1,21 +1,20 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { IComment } from '../../model/types/comment';
 import cls from './CommentCard.module.scss';
 
 interface CommentCardProps {
     className?: string;
     comment?: IComment;
-    isLoading?: boolean;
+    isLoading?: boolean
 }
 
 export const CommentCard = memo((props: CommentCardProps) => {
-    const { t } = useTranslation();
-
     const {
         className,
         comment,
@@ -33,10 +32,13 @@ export const CommentCard = memo((props: CommentCardProps) => {
             </div>
         );
     }
+    if (!comment) {
+        return null;
+    }
 
     return (
         <div className={classNames(cls.CommentCard, {}, [className])}>
-            <div className={cls.header}>
+            <AppLink to={`${RoutePath.profile}${comment?.user.id}`} className={cls.header}>
                 {comment?.user?.avatar
                     ? (
                         <Avatar
@@ -48,7 +50,7 @@ export const CommentCard = memo((props: CommentCardProps) => {
                     )
                     : null}
                 <Text text={comment?.user.username} size={TextSize.L} theme={TextTheme.PRIMARY} />
-            </div>
+            </AppLink>
             <Text className={cls.text} text={comment?.text} />
         </div>
     );

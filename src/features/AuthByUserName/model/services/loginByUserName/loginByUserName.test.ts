@@ -1,6 +1,6 @@
 import { User, userActions } from 'entities/User';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { LoginSchema } from 'features/AuthByUserName';
+import { LoginSchema } from '../../types/loginSchema';
 import { loginByUsername } from './loginByUserName';
 
 describe('loginByUserName.tests', () => {

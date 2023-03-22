@@ -25,7 +25,11 @@ export const getArticleComments = commentsAdapter.getSelectors<StateSchema>(
 const articleDetailsCommentSlice = createSlice({
     name: 'articleDetailsCommentSlice',
     initialState: commentsAdapter.getInitialState<ArticleDetailsCommentsSchema>(commentInitialState),
-    reducers: {},
+    reducers: {
+        addComment: (state, action: PayloadAction<IComment>) => {
+            commentsAdapter.addOne(state, action.payload);
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchCommentsByArticleId.pending, (state) => {

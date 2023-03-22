@@ -1,5 +1,5 @@
-import { MyButton, ButtonTheme } from 'shared/ui/MyButton/MyButton';
 import { render, screen } from '@testing-library/react';
+import { MyButton, ButtonTheme } from './MyButton';
 
 describe('classNames', () => {
     test('with only first params', () => {

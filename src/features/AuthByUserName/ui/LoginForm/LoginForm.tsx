@@ -12,7 +12,7 @@ import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLogi
 import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
 import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { loginByUsername } from '../../model/services/loginByUserName/loginByUserName';
-import { loginActions, loginReducer } from '../../model/slice/loginSlice';
+import { loginActions, loginReducer } from '../../model/slices/loginSlice';
 import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {

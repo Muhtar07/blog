@@ -4,7 +4,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
-import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
+import { ArticleBlockType, ArticleType } from '../../model/types/article';
 import { ArticleDetails } from './ArticleDetails';
 
 const articleDetails = {
@@ -82,7 +82,7 @@ const articleDetails = {
     },
 };
 export default {
-    title: 'entities/ArticleDetails',
+    title: 'entities/Article/ArticleDetails',
     component: ArticleDetails,
     argTypes: {
         backgroundColor: { control: 'color' },

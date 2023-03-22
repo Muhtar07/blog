@@ -5,7 +5,7 @@ import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDeco
 import LoginForm from './LoginForm';
 
 export default {
-    title: 'features/LoginForm',
+    title: 'features/Login/LoginForm',
     component: LoginForm,
     argTypes: {
         backgroundColor: { control: 'color' },

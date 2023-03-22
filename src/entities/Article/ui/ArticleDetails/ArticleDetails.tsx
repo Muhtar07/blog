@@ -106,7 +106,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                     height={20}
                 />
                 <Skeleton
-                    className={cls.date}
+                    className={cls.dateSkeleton}
                     width={200}
                     height={20}
                 />
@@ -171,7 +171,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     }
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+        <DynamicModuleLoader reducers={reducers}>
             <div className={classNames(cls.ArticleDetails, {}, [className])}>
                 {content}
             </div>

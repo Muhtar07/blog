@@ -12,9 +12,9 @@ import { CommentList } from 'entities/Comment';
 import { memo } from 'react';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import {
-    fetchCommentsByArticleId,
-} from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { AddNewCommentForArticle } from 'features/AddNewCommentForArticle';
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+
 import { getArticleCommentsError, getArticleCommentsIsLoading } from '../../model/selectors/commets';
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices/articleDetailsCommentSlice';
@@ -44,7 +44,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         dispatch(fetchCommentsByArticleId(id));
     });
 
-    if (!id) {
+    if (!id && __PROJECT__ !== 'storybook') {
         return (
             <div className={cls.articleNotFound}>
                 <Text
@@ -60,8 +60,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                <ArticleDetails id={id} />
+                <ArticleDetails id={id || '1'} />
                 <Text text={t('Комментарии')} size={TextSize.XL} theme={TextTheme.PRIMARY} />
+                <AddNewCommentForArticle />
                 {commentError
                     ? (
                         <Text

@@ -1,12 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { ThunkConfig } from 'app/providers/StoreProvider';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { getProfileForm } from '../../selectors/getProfileForm/getProfileForm';
 import { Profile } from '../../types/profile';
 import { validateProfileData, ValidateProfileError } from '../validateProfileData/validateProfileData';
 
-export const putProfileData = createAsyncThunk<Profile, void, ThunkConfig<ValidateProfileError[]>>(
+export const putProfileData = createAsyncThunk<Profile, string, ThunkConfig<ValidateProfileError[]>>(
     'profile/putProfileData',
-    async (_, thinkApi) => {
+    async (profileId, thinkApi) => {
         const {
             extra: {
                 api,
@@ -24,15 +25,14 @@ export const putProfileData = createAsyncThunk<Profile, void, ThunkConfig<Valida
         }
 
         try {
-            const response = await api.put<Profile>('/profile', formData);
+            const response = await api.put<Profile>(`${RoutePath.profile}${profileId}`, formData);
 
             if (!response.data) {
-                throw new Error();
+                return rejectWithValue([ValidateProfileError.NO_DATA]);
             }
 
             return response?.data;
         } catch (e) {
-            console.log(e);
             return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
         }
     },

@@ -1,0 +1,23 @@
+.AddNewCommentForm {
+    padding: 20px;
+    border: 1px solid var(--primary-color);
+    position: relative;
+}
+
+.commentFromWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input {
+    flex-grow: 1;
+}
+
+.errorContainer {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    margin-top: -20px;
+    height: 20px;
+}

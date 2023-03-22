@@ -5,7 +5,7 @@ import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDeco
 import { LoginModal } from './LoginModal';
 
 export default {
-    title: 'features/LoginModal',
+    title: 'features/Login/LoginModal',
     component: LoginModal,
     argTypes: {
         backgroundColor: { control: 'color' },

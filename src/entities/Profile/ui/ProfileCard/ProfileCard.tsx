@@ -9,7 +9,6 @@ import { memo } from 'react';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
-import { ValidateProfileError } from 'entities/Profile';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 

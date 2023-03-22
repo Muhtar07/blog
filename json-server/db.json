@@ -34,33 +34,198 @@
   "comments": [
     {
       "id": "1",
-      "body": "some comment",
-      "postId": "1"
+      "text": "some comment",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "text": "some comment 2",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "3",
+      "text": "some comment 3",
+      "articleId": "1",
+      "userId": "1"
+    },
+    {
+      "id": "4",
+      "text": "some comment 4",
+      "articleId": "1",
+      "userId": "2"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "fddscdsc",
+      "id": "y8GAE6L"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "привет капиталки из дагестана",
+      "id": "CQMpd4h"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "cdcs",
+      "id": "sYJU8i5"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "vdfvxfv",
+      "id": "1Ivba_F"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "vfdv",
+      "id": "RNoJh0w"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "cdscsd",
+      "id": "9juCEhn"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "fdfds",
+      "id": "Jd6tW99"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "vdfvd",
+      "id": "ysgYfP2"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "vfdvd",
+      "id": "ZgF5CTJ"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "vfdvd",
+      "id": "0NkjMKL"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "dcsdcdsc",
+      "id": "-Ze16fh"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "vfdvdfvdfv",
+      "id": "ue62OeA"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "процесс ни чем не заве",
+      "id": "XgajyDQ"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "можно спорить",
+      "id": "sRuD9rr"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "ччч",
+      "id": "5bUpc9I"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "посмотри что моднотиоаис",
+      "id": "ENynMBM"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "xnj gjltkfnm 'nj m,skfnvvcvcx",
+      "id": "NiApovy"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "cdsvcdxvxc",
+      "id": "yx4gfvy"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "cxzcxzczxc",
+      "id": "zWxFzdU"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "ауаыв",
+      "id": "HEYrHSC"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "vfvdvdfvdvdvcdscdscscsdcscdcscscs",
+      "id": "dnpM3uS"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "csdcs",
+      "id": "N769ADD"
     }
   ],
-  "profile": {
-    "firstname": "Мухтар",
-    "lastname": "Беканов",
-    "age": 31,
-    "currency": "USD",
-    "country": "USA",
-    "city": "Moscow",
-    "username": "admin",
-    "avatar": "https://cdn.onlinewebfonts.com/svg/download_263599.png"
-  },
+  "profile": [
+    {
+      "id": "1",
+      "firstname": "Мухтар",
+      "lastname": "Беканов",
+      "age": 31,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://ddcollege.in/admin/dist/img/index.png"
+    },
+    {
+      "id": "2",
+      "firstname": "ктvcxvcx",
+      "lastname": "Беканов",
+      "age": 31,
+      "currency": "USD",
+      "country": "USA",
+      "city": "Moscow",
+      "username": "user",
+      "avatar": "https://psn-rsc.prod.dl.playstation.net/psn-rsc/avatar/UP2136/CUSA02727_00-AV00000000000068_C5B38E353514AF8679CC_l.png"
+    }
+  ],
   "users": [
     {
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role":  "ADMIN",
+      "role": "ADMIN",
       "avatar": "https://ddcollege.in/admin/dist/img/index.png"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role":  "USER",
+      "role": "USER",
       "avatar": "https://psn-rsc.prod.dl.playstation.net/psn-rsc/avatar/UP2136/CUSA02727_00-AV00000000000068_C5B38E353514AF8679CC_l.png"
     }
   ],
@@ -72,7 +237,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -133,26 +300,6 @@
           ]
         }
       ]
-    }
-  ],
-  "comments": [
-    {
-      "id": "1",
-      "text": "some comment",
-      "articleId": "1",
-      "userId": "1"
-    },
-    {
-      "id": "2",
-      "text": "some comment 2",
-      "articleId": "1",
-      "userId": "1"
-    },
-    {
-      "id": "3",
-      "text": "some comment 3",
-      "articleId": "1",
-      "userId": "1"
     }
   ]
 }

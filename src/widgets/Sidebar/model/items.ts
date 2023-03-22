@@ -4,6 +4,8 @@ import AboutIcon from 'shared/assets/icons/about-icon.svg';
 import MainIcon from 'shared/assets/icons/main-icon.svg';
 import ProfileIcon from 'shared/assets/icons/profile2020.svg';
 import ArticleIcon from 'shared/assets/icons/artcile.svg';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from 'entities/User';
 
 export interface SidebarItemType {
     path: string,
