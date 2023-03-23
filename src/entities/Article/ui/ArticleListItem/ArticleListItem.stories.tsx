@@ -1,15 +1,28 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { Article, ArticleBlockType, ArticleType } from '../../types/article';
-import { fetchArticleById } from './fetchArticleById';
+import React from 'react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 
-const articleDetails = {
+import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
+import { Theme } from 'app/providers/ThemeProvider';
+import TestImg from 'shared/assets/tests/img-test.jpg';
+import AvatarUser from 'shared/assets/tests/avatar.png';
+import {
+    Article, ArticleBlockType, ArticleView, ArticleType,
+} from '../../model/types/article';
+import { ArticleListItem } from './ArticleListItem';
+
+const articleDetails: Article = {
     id: '1',
     title: 'Javascript news',
     subtitle: 'Что нового в JS за 2022 год?',
-    img: 'https://teknotower.com/wp-content/uploads/2020/11/js.png',
+    img: TestImg,
     views: 1022,
     createdAt: '26.02.2022',
-    type: [ArticleType.IT],
+    type: [ArticleType.IT, ArticleType.SCIENCE, ArticleType.ECONOMICS],
+    user: {
+        id: '1',
+        username: 'test',
+        avatar: AvatarUser,
+    },
     blocks: [
         {
             id: '1',
@@ -38,7 +51,7 @@ const articleDetails = {
         {
             id: '4',
             type: ArticleBlockType.IMAGE,
-            src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
+            src: TestImg,
             title: 'Рисунок 1 - скриншот сайта',
         },
         {
@@ -58,7 +71,7 @@ const articleDetails = {
         {
             id: '7',
             type: ArticleBlockType.IMAGE,
-            src: 'https://hsto.org/r/w1560/getpro/habr/post_images/d56/a02/ffc/d56a02ffc62949b42904ca00c63d8cc1.png',
+            src: TestImg,
             title: 'Рисунок 1 - скриншот сайта',
         },
         {
@@ -71,27 +84,44 @@ const articleDetails = {
             ],
         },
     ],
-} as Article;
+};
 
-describe('fetchProfileData', () => {
-    test('success get profile', async () => {
-        const thunk = new TestAsyncThunk(fetchArticleById);
-        thunk.api.get.mockReturnValue(Promise.resolve({ data: articleDetails }));
+export default {
+    title: 'entities/Article/ArticleListItem',
+    component: ArticleListItem,
+    argTypes: {
+        backgroundColor: { control: 'color' },
+    },
+} as ComponentMeta<typeof ArticleListItem>;
 
-        const result = await thunk.callThunk('1');
+const Template: ComponentStory<typeof ArticleListItem> = (args) => <ArticleListItem {...args} />;
 
-        expect(thunk.api.get).toHaveBeenCalled();
-        expect(result.meta.requestStatus).toBe('fulfilled');
-        expect(result.payload).toEqual(articleDetails);
-    });
-    test('error get profile', async () => {
-        const thunk = new TestAsyncThunk(fetchArticleById);
-        thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-        const result = await thunk.callThunk('1');
+export const LightSmall = Template.bind({});
+LightSmall.args = {
+    article: articleDetails,
+};
 
-        expect(result.meta.requestStatus).toBe('rejected');
-        expect(thunk.api.get).toHaveBeenCalled();
-        expect(thunk.dispatch).toHaveBeenCalledTimes(2);
-        expect(result.payload).toBe('error');
-    });
-});
+export const DarkBig = Template.bind({});
+DarkBig.args = {
+    article: articleDetails,
+    view: ArticleView.BIG,
+
+};
+
+DarkBig.decorators = [ThemeDecorator(Theme.DARK)];
+
+export const LightBig = Template.bind({});
+LightBig.args = {
+    article: articleDetails,
+    view: ArticleView.BIG,
+
+};
+
+export const DarkSmall = Template.bind({});
+DarkSmall.args = {
+    article: articleDetails,
+    view: ArticleView.SMALL,
+
+};
+
+DarkSmall.decorators = [ThemeDecorator(Theme.DARK)];

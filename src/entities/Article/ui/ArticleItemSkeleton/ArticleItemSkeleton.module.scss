@@ -1,0 +1,62 @@
+.ArticleItemSkeleton.small {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    margin-bottom: 20px;
+    background: var(--bg-card);
+}
+
+.card.small {
+    margin: 0 10px 10px 0;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.title {
+    margin: 5px;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+
+    .username {
+        margin-left: 10px;
+    }
+}
+
+.headerArticleSkeleton {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.footer {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+
+.big {
+    width: 100%;
+
+    .card {
+        width: 100%;
+    }
+}
+
+.view {
+    display: flex;
+    align-items: center;
+}
+
+.eye {
+    margin-left: 5px;
+}

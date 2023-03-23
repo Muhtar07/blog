@@ -1,7 +1,7 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { ArticleDetails } from 'entities/Article';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
@@ -9,10 +9,12 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 
 import { useSelector } from 'react-redux';
 import { CommentList } from 'entities/Comment';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddNewCommentForArticle } from 'features/AddNewCommentForArticle';
+import { MyButton } from 'shared/ui/MyButton/MyButton';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 import { getArticleCommentsError, getArticleCommentsIsLoading } from '../../model/selectors/commets';
@@ -33,6 +35,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const commentIsLoading = useSelector(getArticleCommentsIsLoading);
     const commentError = useSelector(getArticleCommentsError);
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const {
         className,
@@ -43,6 +46,10 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     });
+
+    const onBackButton = useCallback(() => {
+        navigate(RoutePath.articles);
+    }, [navigate]);
 
     if (!id && __PROJECT__ !== 'storybook') {
         return (
@@ -59,6 +66,13 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
+            <div className={cls.buttonContainer}>
+                <MyButton
+                    onClick={onBackButton}
+                >
+                    {t('Назад')}
+                </MyButton>
+            </div>
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetails id={id || '1'} />
                 <Text text={t('Комментарии')} size={TextSize.XL} theme={TextTheme.PRIMARY} />

@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import cls from './ArticleTextBlockComponent.module.scss';
 
-interface ArticleTextBlockComponentProps {
+export interface ArticleTextBlockComponentProps {
     className?: string;
     title?: string;
     paragraphs: string[]
