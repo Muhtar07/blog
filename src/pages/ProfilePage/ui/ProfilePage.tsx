@@ -19,6 +19,7 @@ import { Country } from 'entities/Country';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
+import { Page } from 'shared/ui/Page/Page';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -99,7 +100,7 @@ const ProfilePage = memo((props: ProfilePageProps) => {
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={classNames(cls.ProfilePage, {}, [className])}>
+            <Page className={classNames(cls.ProfilePage, {}, [className])}>
                 <ProfilePageHeader />
                 {
                     validateErrors?.length ? validateErrors.map((err) => (
@@ -125,7 +126,7 @@ const ProfilePage = memo((props: ProfilePageProps) => {
                     updateCurrency={updateCurrency}
                     updateCountry={updateCountry}
                 />
-            </div>
+            </Page>
         </DynamicModuleLoader>
 
     );

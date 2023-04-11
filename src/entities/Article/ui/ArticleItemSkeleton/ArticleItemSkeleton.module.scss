@@ -1,16 +1,6 @@
-.ArticleItemSkeleton.small {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
 .card {
-    margin-bottom: 20px;
-    background: var(--bg-card);
-}
-
-.card.small {
-    margin: 0 10px 10px 0;
+    margin: 0 20px 20px 0;
+    padding: 10px;
 }
 
 .meta {
@@ -49,6 +39,7 @@
 
     .card {
         width: 100%;
+        margin: 0;
     }
 }
 

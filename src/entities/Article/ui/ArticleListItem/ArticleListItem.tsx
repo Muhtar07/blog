@@ -9,8 +9,6 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useHover } from 'shared/lib/hooks/useHover/useHover';
-import { ArticleItemSkeleton } from '../ArticleItemSkeleton/ArticleItemSkeleton';
 import { Article, ArticleBlockType, ArticleView } from '../../model/types/article';
 import {
     ArticleTextBlockComponent,
@@ -22,7 +20,6 @@ interface ArticleListItemProps {
     className?:string,
     view?: ArticleView;
     article:Article;
-    isLoading: boolean,
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
@@ -30,7 +27,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
         view = ArticleView.SMALL,
         article,
         className,
-        isLoading,
     } = props;
     const navigate = useNavigate();
 
@@ -39,10 +35,6 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
     const onOpenArticle = useCallback(() => {
         navigate(RoutePath.article_details + article.id);
     }, [article.id, navigate]);
-
-    if (isLoading) {
-        return (<ArticleItemSkeleton view={view} />);
-    }
 
     if (view === ArticleView.SMALL) {
         return (

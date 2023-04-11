@@ -53,17 +53,4 @@ describe('counterSlice.tests', () => {
             ...state, readonly: true, form: state.data, validateErrors: undefined,
         });
     });
-    // test('increment', () => {
-    //     const state: ProfileSchema = {
-    //         value: 10,
-    //     };
-    //     expect(
-    //         counterReducer(state, counterActions.increment()),
-    //     ).toEqual({ value: 11 });
-    // });
-    // test('should work with empty state', () => {
-    //     expect(
-    //         counterReducer(undefined, counterActions.increment()),
-    //     ).toEqual({ value: 1 });
-    // });
 });

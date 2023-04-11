@@ -15,9 +15,10 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddNewCommentForArticle } from 'features/AddNewCommentForArticle';
 import { MyButton } from 'shared/ui/MyButton/MyButton';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
-import { getArticleCommentsError, getArticleCommentsIsLoading } from '../../model/selectors/commets';
+import { getArticleCommentsError, getArticleCommentsIsLoading } from '../../model/selectors/articleCommentsSelectors';
 import cls from './ArticleDetailsPage.module.scss';
 import { articleDetailsCommentsReducer, getArticleComments } from '../../model/slices/articleDetailsCommentSlice';
 
@@ -53,26 +54,26 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
     if (!id && __PROJECT__ !== 'storybook') {
         return (
-            <div className={cls.articleNotFound}>
+            <Page className={cls.articleNotFound}>
                 <Text
                     text={t('Статья не найдена')}
                     theme={TextTheme.ERROR}
                     size={TextSize.L}
                     textAlign={TextAlign.CENTER}
                 />
-            </div>
+            </Page>
         );
     }
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-            <div className={cls.buttonContainer}>
+            <Page className={cls.buttonContainer}>
                 <MyButton
                     onClick={onBackButton}
                 >
                     {t('Назад')}
                 </MyButton>
-            </div>
+            </Page>
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetails id={id || '1'} />
                 <Text text={t('Комментарии')} size={TextSize.XL} theme={TextTheme.PRIMARY} />

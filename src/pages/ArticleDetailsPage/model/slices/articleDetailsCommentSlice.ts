@@ -7,10 +7,10 @@ import { fetchCommentsByArticleId } from '../services/fetchCommentsByArticleId/f
 import { ArticleDetailsCommentsSchema } from '../types/articleDetailsCommentsSchema';
 
 const commentInitialState: ArticleDetailsCommentsSchema = {
-    ids: [],
     isLoading: false,
     entities: {},
     error: undefined,
+    ids: [],
 };
 
 const commentsAdapter = createEntityAdapter<IComment>({

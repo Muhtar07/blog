@@ -31,14 +31,14 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
     if (authData) {
         return (
-            <div className={classNames(cls.Navbar, {}, [className])}>
+            <header className={classNames(cls.Navbar, {}, [className])}>
                 <MyButton
                     onClick={handlerLogout}
                     theme={ButtonTheme.CLEAR_INVERTED}
                 >
                     {t('Выйти')}
                 </MyButton>
-            </div>
+            </header>
         );
     }
 
