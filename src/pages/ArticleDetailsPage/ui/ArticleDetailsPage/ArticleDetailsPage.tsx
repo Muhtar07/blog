@@ -73,28 +73,29 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                 >
                     {t('Назад')}
                 </MyButton>
-            </Page>
-            <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                <ArticleDetails id={id || '1'} />
-                <Text text={t('Комментарии')} size={TextSize.XL} theme={TextTheme.PRIMARY} />
-                <AddNewCommentForArticle />
-                {commentError
-                    ? (
-                        <Text
-                            text={commentError}
-                            textAlign={TextAlign.CENTER}
-                            size={TextSize.L}
-                            theme={TextTheme.ERROR}
-                        />
-                    )
-                    : (
-                        <CommentList
-                            isLoading={commentIsLoading}
-                            comments={comments}
-                        />
-                    )}
 
-            </div>
+                <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                    <ArticleDetails id={id || '1'} />
+                    <Text text={t('Комментарии')} size={TextSize.XL} theme={TextTheme.PRIMARY} />
+                    <AddNewCommentForArticle />
+                    {commentError
+                        ? (
+                            <Text
+                                text={commentError}
+                                textAlign={TextAlign.CENTER}
+                                size={TextSize.L}
+                                theme={TextTheme.ERROR}
+                            />
+                        )
+                        : (
+                            <CommentList
+                                isLoading={commentIsLoading}
+                                comments={comments}
+                            />
+                        )}
+
+                </div>
+            </Page>
         </DynamicModuleLoader>
     );
 };

@@ -1,15 +1,14 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { memo, useCallback, useRef } from 'react';
+import { memo, useCallback } from 'react';
 import { ArticleList, ArticleView } from 'entities/Article';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { useSelector } from 'react-redux';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { ArticlesSwitcherView } from 'features/ArticlesSwitcherView/ui/ArticlesSwitcherView';
+import { ArticlesSwitcherView } from 'features/ArticlesSwitcherView';
 import { Page } from 'shared/ui/Page/Page';
-import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage/fetchNextArticlesPage';
-import { fetchArticlesPageData } from '../../model/services/fetchArticlesPageData/fetchArticlesPageData';
+import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage';
+import { initArticlesPage } from '../../model/services/initArticlesPage/initArticlesPage';
 import {
     getArticlesPageError,
     getArticlesPageIsLoading,
@@ -25,15 +24,7 @@ const reducers: ReducersList = {
     articlesPage: articlesPageReducer,
 };
 
-export interface GetLimitProps {
-    heightList?: number;
-    widthList?: number;
-    heightItem?: number;
-    widthItem?: number;
-}
-
 const ArticlesPage = (props: ArticlesPageProps) => {
-    const { t } = useTranslation();
     const {
         className,
     } = props;
@@ -44,20 +35,6 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     const view = useSelector(getArticlesPageView);
     const dispatch = useAppDispatch();
 
-    const limit = useCallback(({
-        heightList, widthList, heightItem, widthItem,
-    }:GetLimitProps) => {
-        if (heightList && widthList && heightItem && widthItem) {
-            const limitWidth = heightList / heightItem;
-            const limitHeight = widthList / widthItem;
-            console.log(Math.ceil(limitHeight * limitWidth));
-            console.log(heightList, widthList, heightItem, widthItem);
-
-            return Math.ceil(limitHeight * limitWidth);
-        }
-        return 9;
-    }, []);
-
     const onChangeView = useCallback((view: ArticleView) => {
         dispatch(articlesPageActions.setView(view || ArticleView.SMALL));
     }, [dispatch]);
@@ -67,12 +44,11 @@ const ArticlesPage = (props: ArticlesPageProps) => {
     }, [dispatch]);
 
     useInitialEffect(() => {
-        dispatch(articlesPageActions.initState());
-        dispatch(fetchArticlesPageData());
+        dispatch(initArticlesPage);
     });
 
     return (
-        <DynamicModuleLoader reducers={reducers}>
+        <DynamicModuleLoader reducers={reducers} removeAfterUnmount={false}>
             <Page onScrollEnd={onLoadNextPart}>
                 <ArticlesSwitcherView view={view || ArticleView.SMALL} handlerClick={onChangeView} />
                 <div className={classNames(cls.ArticlesPage, {}, [className])}>

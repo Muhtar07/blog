@@ -92,6 +92,7 @@ describe('fetchArticlesPageData', () => {
                 limit: 9,
                 ids: [],
                 entities: {},
+                _inited: false,
             },
         });
         thunk.api.get.mockReturnValue(Promise.resolve({ data: articles }));
@@ -110,6 +111,7 @@ describe('fetchArticlesPageData', () => {
                 limit: 9,
                 ids: [],
                 entities: {},
+                _inited: false,
             },
         });
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));

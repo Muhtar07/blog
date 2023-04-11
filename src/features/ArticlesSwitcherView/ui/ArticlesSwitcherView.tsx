@@ -1,5 +1,4 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { ArticleView } from 'entities/Article';
 import Table from 'shared/assets/icons/table.svg';
@@ -25,8 +24,6 @@ const articleView = [
 ];
 
 export const ArticlesSwitcherView = memo((props: ArticlesSwitcherViewProps) => {
-    const { t } = useTranslation();
-
     const {
         handlerClick,
         view,
@@ -39,9 +36,9 @@ export const ArticlesSwitcherView = memo((props: ArticlesSwitcherViewProps) => {
     return (
         <div className={cls.ArticlesSwitcherView}>
             {
-                articleView.map((viewType, index) => (
+                articleView.map((viewType) => (
                     <MyButton
-                        key={index}
+                        key={viewType.view}
                         onClick={onClick(viewType.view)}
                         theme={ButtonTheme.CLEAR}
                     >
