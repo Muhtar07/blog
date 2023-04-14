@@ -1,4 +1,4 @@
-import { Article } from 'entities/Article';
+import { Article, ArticleSortField, ArticleView } from 'entities/Article';
 import { ArticleBlockType, ArticleType } from 'entities/Article/model/types/article';
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
 import { fetchArticlesPageData } from './fetchArticlesPageData';
@@ -88,16 +88,22 @@ describe('fetchArticlesPageData', () => {
         const thunk = new TestAsyncThunk(fetchArticlesPageData, {
             articlesPage: {
                 page: 1,
-                hasMore: false,
+                hasMore: true,
                 limit: 9,
                 ids: [],
                 entities: {},
+                sort: ArticleSortField.CREATED,
+                order: 'asc',
+                search: '',
+                view: ArticleView.BIG,
                 _inited: false,
+                type: ArticleType.ALL,
+
             },
         });
         thunk.api.get.mockReturnValue(Promise.resolve({ data: articles }));
 
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk({ replace: false });
 
         expect(thunk.api.get).toHaveBeenCalled();
         expect(result.meta.requestStatus).toBe('fulfilled');
@@ -107,15 +113,20 @@ describe('fetchArticlesPageData', () => {
         const thunk = new TestAsyncThunk(fetchArticlesPageData, {
             articlesPage: {
                 page: 1,
-                hasMore: false,
+                hasMore: true,
                 limit: 9,
                 ids: [],
                 entities: {},
+                sort: ArticleSortField.CREATED,
+                order: 'asc',
+                search: '',
+                view: ArticleView.BIG,
                 _inited: false,
+                type: ArticleType.ALL,
             },
         });
         thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-        const result = await thunk.callThunk();
+        const result = await thunk.callThunk({ replace: false });
 
         expect(result.meta.requestStatus).toBe('rejected');
         expect(thunk.api.get).toHaveBeenCalled();

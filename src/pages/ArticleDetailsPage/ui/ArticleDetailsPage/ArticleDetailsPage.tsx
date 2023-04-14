@@ -15,7 +15,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddNewCommentForArticle } from 'features/AddNewCommentForArticle';
 import { MyButton } from 'shared/ui/MyButton/MyButton';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Page } from 'shared/ui/Page/Page';
+import { Page } from 'widgets/Page/Page';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 import { getArticleCommentsError, getArticleCommentsIsLoading } from '../../model/selectors/articleCommentsSelectors';
@@ -74,7 +74,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     {t('Назад')}
                 </MyButton>
 
-                <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                <div
+                    className={classNames(cls.ArticleDetailsPage, {}, [className])}
+                >
                     <ArticleDetails id={id || '1'} />
                     <Text text={t('Комментарии')} size={TextSize.XL} theme={TextTheme.PRIMARY} />
                     <AddNewCommentForArticle />

@@ -10,10 +10,12 @@ import { ArticleDetailsSchema } from 'entities/Article';
 import { ArticleDetailsCommentsSchema } from 'pages/ArticleDetailsPage';
 import { AddNewCommentForArticleSchema } from 'features/AddNewCommentForArticle';
 import { ArticlesPageSchema } from 'pages/ArticlesPage/model/types/articlesPageTypes';
+import { ScrollSaveSchema } from 'features/ScrollSave';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
+    scrollSave: ScrollSaveSchema;
 
     // Асинхроные редюсеры
 

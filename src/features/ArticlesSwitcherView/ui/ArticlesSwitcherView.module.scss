@@ -5,13 +5,13 @@
 }
 
 .selected {
-    fill: #fa2d2d;
+    fill: var(--primary-color);
     opacity: 1.5;
     transform: scale(1.3);
 }
 
 .notSelected {
-    fill: #fa2d2d;
+    fill: var(--primary-color);
     opacity: 0.6;
 }
 

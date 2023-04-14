@@ -4,6 +4,7 @@ import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
 import { ArticleItemSkeleton } from 'entities/Article/ui/ArticleItemSkeleton/ArticleItemSkeleton';
+import { useTranslation } from 'react-i18next';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -25,6 +26,8 @@ export const ArticleList = memo((props: ArticleListProps) => {
         error,
     } = props;
 
+    const { t } = useTranslation();
+
     const skeletonArray = Array(view === ArticleView.BIG ? 4 : 9).fill(0);
 
     const mods:Mods = {
@@ -33,12 +36,30 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
     if (error) {
         return (
-            <Text
-                text={error}
-                textAlign={TextAlign.CENTER}
-                size={TextSize.XL}
-                theme={TextTheme.ERROR}
-            />
+            <div
+                className={classNames('', mods, [className])}
+            >
+                <Text
+                    text={error}
+                    textAlign={TextAlign.CENTER}
+                    size={TextSize.XL}
+                    theme={TextTheme.ERROR}
+                />
+            </div>
+        );
+    }
+
+    if (!isLoading && !articles?.length) {
+        return (
+            <div
+                className={classNames('', mods, [className])}
+            >
+                <Text
+                    text={t('Нету статей')}
+                    textAlign={TextAlign.LEFT}
+                    size={TextSize.XL}
+                />
+            </div>
         );
     }
 

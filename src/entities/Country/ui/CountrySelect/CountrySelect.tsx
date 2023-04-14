@@ -11,7 +11,7 @@ interface CountrySelectProps {
     readonly?: boolean
 }
 
-const countries: SelectOption[] = [
+const countries: SelectOption<Country>[] = [
     {
         value: Country.RUSSIA,
         content: Country.RUSSIA,

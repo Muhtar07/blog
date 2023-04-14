@@ -13,7 +13,7 @@ export default {
     },
 } as ComponentMeta<typeof Select>;
 
-const currency: SelectOption[] = [
+const currency: SelectOption<Currency>[] = [
     {
         value: Currency.RUB,
         content: Currency.RUB,
