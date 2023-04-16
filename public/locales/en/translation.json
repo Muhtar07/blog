@@ -19,7 +19,23 @@
   "Укажите валюту": "Specify the currency",
   "Укажите страну": "Specify the country",
   "Профиль пользователя" : "User Profile",
-  "Статьи" : "Article"
+  "Статьи" : "Article",
+  "MUHTAR": "MUHTAR",
+  "Создать новую статью": "Create new article",
+
+  "Читать далее...": "Read more...",
+  "Поиск": "Search",
+  "Нету статей": "No articles",
+  "Сортировка ПО": "Sort BY",
+  "ПО": "BY",
+  "названию": "title",
+  "просмотрам": "views",
+  "дате создания": "creation date",
+  "убыванию": "descending",
+  "возрастанию": "ascending",
+  "Создание новой статьи": "Creating a new article",
+  "Редатирования статьи с ID =": "Editing an article with ID ="
+
 
 
 }
