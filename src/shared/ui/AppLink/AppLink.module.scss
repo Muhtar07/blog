@@ -5,13 +5,17 @@
 }
 
 .primary {
-    color: var(--inverted-primary-color);
+    color: var(--primary-color);
 }
 
 .secondary {
-    color: var(--inverted-secondary-color);
+    color: var(--secondary-color);
 }
 
 .red {
     color: red;
+}
+
+.inverted {
+    color: var(--inverted-primary-color);
 }

@@ -13,7 +13,11 @@ export const fetchArticleById = createAsyncThunk<Article, string, ThunkConfig<st
             rejectWithValue,
         } = thinkApi;
         try {
-            const response = await api.get<Article>(RoutePath.article_details + articleId);
+            const response = await api.get<Article>(RoutePath.article_details + articleId, {
+                params: {
+                    _expand: 'user',
+                },
+            });
 
             if (!response.data) {
                 throw new Error();

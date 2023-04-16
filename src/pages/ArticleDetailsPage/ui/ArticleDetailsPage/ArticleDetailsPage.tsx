@@ -19,6 +19,7 @@ import { Page } from 'widgets/Page/Page';
 import {
     fetchArticleRecommendations,
 } from 'pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { ArticleDetailsPageHeader } from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleRecommendationError, getArticleRecommendationIsLoading } from '../../model/selectors/recommendation';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
@@ -45,7 +46,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     const recommendationIsLoading = useSelector(getArticleRecommendationIsLoading);
     const recommendationIsError = useSelector(getArticleRecommendationError);
     const dispatch = useAppDispatch();
-    const navigate = useNavigate();
 
     const {
         className,
@@ -57,10 +57,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         dispatch(fetchCommentsByArticleId(id));
         dispatch(fetchArticleRecommendations());
     });
-
-    const onBackButton = useCallback(() => {
-        navigate(RoutePath.articles);
-    }, [navigate]);
 
     if (!id && __PROJECT__ !== 'storybook') {
         return (
@@ -78,11 +74,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Page className={cls.buttonContainer}>
-                <MyButton
-                    onClick={onBackButton}
-                >
-                    {t('Назад')}
-                </MyButton>
+                <ArticleDetailsPageHeader />
 
                 <div
                     className={classNames(cls.ArticleDetailsPage, {}, [className])}

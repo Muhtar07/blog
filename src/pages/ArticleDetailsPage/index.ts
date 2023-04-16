@@ -10,3 +10,4 @@ export {
 export {
     ArticleDetailsPageSchema,
 } from './model/types/index';
+export { getCanEditArticle } from './model/selectors/article';
