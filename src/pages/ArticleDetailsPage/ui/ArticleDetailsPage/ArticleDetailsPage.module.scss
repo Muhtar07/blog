@@ -6,7 +6,9 @@
     justify-content: center;
 }
 
-.buttonContainer {
-    width: 100%;
-    padding: 15px;
+.recommendations {
+    margin-top: 20px;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
 }

@@ -1,5 +1,5 @@
 import { classNames, Mods } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
@@ -15,6 +15,7 @@ interface ArticleListProps {
     view?: ArticleView;
     isLoading?: boolean;
     error?: string;
+    target?: HTMLAttributeAnchorTarget
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
@@ -24,6 +25,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         view = ArticleView.SMALL,
         isLoading,
         error,
+        target,
     } = props;
 
     const { t } = useTranslation();
@@ -72,6 +74,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     view={view}
                     article={article}
                     key={article.id}
+                    target={target}
                 />
             )) : null}
             {isLoading && (

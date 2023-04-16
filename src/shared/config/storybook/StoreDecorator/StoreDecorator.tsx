@@ -7,12 +7,14 @@ import { articleReducer } from 'entities/Article/model/slice/articleSlice';
 import {
     addNewCommentForArticleReducer,
 } from 'features/AddNewCommentForArticle/model/slices/addNewCommentForArticleSlice';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slices';
 
 const defaultAsyncReducers: ReducersList = {
     loginForm: loginReducer,
     profile: profileReducer,
     articleDetails: articleReducer,
     addNewCommentForArticle: addNewCommentForArticleReducer,
+    articleDetailsPage: articleDetailsPageReducer,
 };
 
 export const StoreDecorator = (
