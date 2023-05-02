@@ -9,6 +9,7 @@ import { memo } from 'react';
 import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { Profile } from '../../model/types/profile';
 import cls from './ProfileCard.module.scss';
 
@@ -52,14 +53,14 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
 
     if (isLoading) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [cls.isLoading])}>
+            <VStack max justify="center" align="center" className={classNames(cls.ProfileCard, {}, [cls.isLoading])}>
                 <Loader />
-            </div>
+            </VStack>
         );
     }
     if (error) {
         return (
-            <div className={classNames(cls.ProfileCard, {}, [cls.error])}>
+            <VStack align="center" max justify="center" className={classNames(cls.ProfileCard, {}, [cls.error])}>
                 <div>
                     <Text
                         text={t('Произошла ошибка')}
@@ -73,80 +74,68 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                         textAlign={TextAlign.CENTER}
                     />
                 </div>
-            </div>
+            </VStack>
         );
     }
 
     return (
-        <div className={classNames(cls.ProfileCard, mods, [className])}>
+        <VStack max gap="12" className={classNames(cls.ProfileCard, mods, [className])}>
             {form?.avatar && (
-                <div
-                    className={cls.avatarWrapper}
-                >
+                <HStack justify="center" max>
                     <Avatar
                         size={150}
                         src={form.avatar}
                         alt={t('Не удалось загрузить картинку')}
                     />
-                </div>
+                </HStack>
             )}
-            <div className={cls.data}>
-                <MyInput
-                    autofocus={!readonly}
-                    placeholder={t('Ваше имя')}
-                    value={form?.firstname}
-                    className={cls.input}
-                    readonly={readonly}
-                    onChange={updateFirstname}
-                />
-                <MyInput
-                    placeholder={t('Ваша фамилия')}
-                    value={form?.lastname}
-                    className={cls.input}
-                    readonly={readonly}
-                    onChange={updateLastname}
-                />
-                <MyInput
-                    placeholder={t('Ваш возраст')}
-                    value={form?.age}
-                    className={cls.input}
-                    readonly={readonly}
-                    onChange={updateAge}
-                />
-                <MyInput
-                    placeholder={t('Ваш username')}
-                    value={form?.username}
-                    className={cls.input}
-                    readonly={readonly}
-                    onChange={updateUsername}
-                />
-                <MyInput
-                    placeholder={t('Ваш город')}
-                    value={form?.city}
-                    className={cls.input}
-                    readonly={readonly}
-                    onChange={updateCity}
-                />
-                <MyInput
-                    placeholder={t('Ваш аватар')}
-                    value={form?.avatar}
-                    className={cls.input}
-                    readonly={readonly}
-                    onChange={updateAvatar}
-                />
-                <CurrencySelect
-                    className={cls.input}
-                    value={form?.currency}
-                    onChange={updateCurrency}
-                    readonly={readonly}
-                />
-                <CountrySelect
-                    readonly={readonly}
-                    value={form?.country}
-                    onChange={updateCountry}
-                    className={cls.input}
-                />
-            </div>
-        </div>
+            <MyInput
+                autofocus={!readonly}
+                placeholder={t('Ваше имя')}
+                value={form?.firstname}
+                readonly={readonly}
+                onChange={updateFirstname}
+            />
+            <MyInput
+                placeholder={t('Ваша фамилия')}
+                value={form?.lastname}
+                readonly={readonly}
+                onChange={updateLastname}
+            />
+            <MyInput
+                placeholder={t('Ваш возраст')}
+                value={form?.age}
+                readonly={readonly}
+                onChange={updateAge}
+            />
+            <MyInput
+                placeholder={t('Ваш username')}
+                value={form?.username}
+                readonly={readonly}
+                onChange={updateUsername}
+            />
+            <MyInput
+                placeholder={t('Ваш город')}
+                value={form?.city}
+                readonly={readonly}
+                onChange={updateCity}
+            />
+            <MyInput
+                placeholder={t('Ваш аватар')}
+                value={form?.avatar}
+                readonly={readonly}
+                onChange={updateAvatar}
+            />
+            <CurrencySelect
+                value={form?.currency}
+                onChange={updateCurrency}
+                readonly={readonly}
+            />
+            <CountrySelect
+                readonly={readonly}
+                value={form?.country}
+                onChange={updateCountry}
+            />
+        </VStack>
     );
 });

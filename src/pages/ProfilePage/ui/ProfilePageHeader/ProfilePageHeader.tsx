@@ -10,7 +10,7 @@ import {
 import { memo, useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
-import cls from './ProfilePageHeader.module.scss';
+import { HStack } from 'shared/ui/Stack';
 
 interface ProfilePageHeaderProps {
     className?: string;
@@ -49,7 +49,7 @@ export const ProfilePageHeader = memo((props: ProfilePageHeaderProps) => {
 
     if (canEdit) {
         return (
-            <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
+            <HStack justify="between" max>
                 <Text
                     theme={TextTheme.PRIMARY}
                     text={t('Профиль')}
@@ -59,16 +59,14 @@ export const ProfilePageHeader = memo((props: ProfilePageHeaderProps) => {
                     ? (
                         <MyButton
                             theme={ButtonTheme.OUTLINE}
-                            className={cls.editBtn}
                             onClick={onEdit}
                         >
                             {t('Редактировать')}
                         </MyButton>
                     )
                     : (
-                        <div className={cls.editBtn}>
+                        <HStack gap="12">
                             <MyButton
-                                className={cls.saveBtn}
                                 onClick={onSave}
                                 theme={ButtonTheme.OUTLINE}
                             >
@@ -80,13 +78,13 @@ export const ProfilePageHeader = memo((props: ProfilePageHeaderProps) => {
                             >
                                 {t('Отменить')}
                             </MyButton>
-                        </div>
+                        </HStack>
                     )}
-            </div>
+            </HStack>
         );
     }
     return (
-        <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
+        <div className={classNames('', {}, [className])}>
             <Text
                 theme={TextTheme.PRIMARY}
                 text={t('Профиль')}

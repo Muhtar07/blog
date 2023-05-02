@@ -1,19 +1,14 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
 import { MyButton } from 'shared/ui/MyButton/MyButton';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getCanEditArticle } from 'pages/ArticleDetailsPage';
 import { getArticleDetailsData } from 'entities/Article';
-import cls from './ArticleDetailsPageHeader.module.scss';
+import { HStack } from 'shared/ui/Stack';
+import { getCanEditArticle } from '../../model/selectors/article';
 
-interface ArticleDetailsPageHeaderProps {
-    className?: string;
-}
-
-export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderProps) => {
+export const ArticleDetailsPageHeader = memo(() => {
     const { t } = useTranslation();
 
     const canEdit = useSelector(getCanEditArticle);
@@ -29,12 +24,8 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
         navigate(`${RoutePath.article_details}${article?.id}/edit`);
     }, [article?.id, navigate]);
 
-    const {
-        className,
-    } = props;
-
     return (
-        <div className={classNames(cls.ArticleDetailsPageHeader, {}, [className])}>
+        <HStack max justify="between">
             <MyButton
                 onClick={onBackButton}
             >
@@ -43,11 +34,10 @@ export const ArticleDetailsPageHeader = memo((props: ArticleDetailsPageHeaderPro
             {canEdit && (
                 <MyButton
                     onClick={onEditButton}
-                    className={cls.editBtn}
                 >
                     {t('Редактировать')}
                 </MyButton>
             ) }
-        </div>
+        </HStack>
     );
 });

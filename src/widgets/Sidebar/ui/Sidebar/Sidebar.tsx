@@ -4,6 +4,7 @@ import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
 import { LanguageSwitcher } from 'widgets/LanguageSwitcher';
 import { MyButton, ButtonTheme, ButtonSize } from 'shared/ui/MyButton/MyButton';
 import { useSelector } from 'react-redux';
+import { VStack } from 'shared/ui/Stack';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 import { getSidebarItems } from '../../model/selectors/getSidebarItems';
 import cls from './Sidebar.module.scss';
@@ -36,9 +37,9 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             )}
             data-testid="sidebar"
         >
-            <div className={cls.items}>
+            <VStack gap="16" className={cls.items}>
                 {itemsList}
-            </div>
+            </VStack>
             <MyButton
                 className={classNames(cls.collapsedBtn)}
                 data-testid="sidebar-toggle"

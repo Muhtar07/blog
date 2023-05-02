@@ -3,6 +3,7 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 import { AddNewCommentForm } from 'entities/Comment';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { HStack } from 'shared/ui/Stack';
 import { sendNewComment } from '../../model/services/sendNewComment';
 import {
     getAddNewCommentForArticleError,
@@ -43,13 +44,16 @@ const AddNewCommentForArticle = memo(() => {
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <AddNewCommentForm
-                onHandlerInputText={onHandlerInputText}
-                onSendComment={onSendComment}
-                isLoading={isLoading}
-                error={error}
-                text={text}
-            />
+            <HStack max>
+                <AddNewCommentForm
+                    onHandlerInputText={onHandlerInputText}
+                    onSendComment={onSendComment}
+                    isLoading={isLoading}
+                    error={error}
+                    text={text}
+                />
+            </HStack>
+
         </DynamicModuleLoader>
 
     );

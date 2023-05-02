@@ -9,17 +9,16 @@ import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/Dynamic
 
 import { useSelector } from 'react-redux';
 import { CommentList } from 'entities/Comment';
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { AddNewCommentForArticle } from 'features/AddNewCommentForArticle';
-import { MyButton } from 'shared/ui/MyButton/MyButton';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page/Page';
+import { HStack, VStack } from 'shared/ui/Stack';
 import {
     fetchArticleRecommendations,
-} from 'pages/ArticleDetailsPage/model/services/fetchArticleRecommendations/fetchArticleRecommendations';
-import { ArticleDetailsPageHeader } from 'pages/ArticleDetailsPage/ui/ArticleDetailsPageHeader/ArticleDetailsPageHeader';
+} from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations';
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader';
 import { articleDetailsPageReducer } from '../../model/slices';
 import { getArticleRecommendationError, getArticleRecommendationIsLoading } from '../../model/selectors/recommendation';
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
@@ -61,12 +60,14 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     if (!id && __PROJECT__ !== 'storybook') {
         return (
             <Page className={cls.articleNotFound}>
-                <Text
-                    text={t('Статья не найдена')}
-                    theme={TextTheme.ERROR}
-                    size={TextSize.L}
-                    textAlign={TextAlign.CENTER}
-                />
+                <HStack max justify="center" align="center">
+                    <Text
+                        text={t('Статья не найдена')}
+                        theme={TextTheme.ERROR}
+                        size={TextSize.L}
+                        textAlign={TextAlign.CENTER}
+                    />
+                </HStack>
             </Page>
         );
     }
@@ -76,8 +77,9 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
             <Page className={cls.buttonContainer}>
                 <ArticleDetailsPageHeader />
 
-                <div
-                    className={classNames(cls.ArticleDetailsPage, {}, [className])}
+                <VStack
+                    max
+                    gap="16"
                 >
                     <ArticleDetails id={id || '1'} />
                     <Text
@@ -85,13 +87,16 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                         size={TextSize.XL}
                         theme={TextTheme.PRIMARY}
                     />
-                    <ArticleList
-                        articles={recommendation}
-                        isLoading={recommendationIsLoading}
-                        error={recommendationIsError}
-                        className={cls.recommendations}
-                        target="_blank"
-                    />
+                    <HStack max>
+                        <ArticleList
+                            articles={recommendation}
+                            isLoading={recommendationIsLoading}
+                            error={recommendationIsError}
+                            className={cls.recommendations}
+                            target="_blank"
+                        />
+                    </HStack>
+
                     <Text
                         text={t('Комментарии')}
                         size={TextSize.XL}
@@ -114,7 +119,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                             />
                         )}
 
-                </div>
+                </VStack>
             </Page>
         </DynamicModuleLoader>
     );

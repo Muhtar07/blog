@@ -12,13 +12,13 @@ import { Avatar } from 'shared/ui/Avatar/Avatar';
 import { Icon } from 'shared/ui/Icon/Icon';
 import Eye from 'shared/assets/icons/eye.svg';
 import Calendar from 'shared/assets/icons/calendar.svg';
+import { HStack, VStack } from 'shared/ui/Stack';
 import { ArticleBlockType } from '../../model/types/article';
 import { fetchArticleById } from '../../model/services/fetchArticleById/fetchArticleById';
 import { ArticleImageBlockComponent } from '../ArticleImageBlockComponent/ArticleImageBlockComponent';
 import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { articleReducer } from '../../model/slice/articleSlice';
-import cls from './ArticleDetails.module.scss';
 import {
     getArticleDetailsData,
     getArticleError,
@@ -26,7 +26,6 @@ import {
 } from '../../model/selectors/getArticleDetailsData/getArticleDetailsData';
 
 interface ArticleDetailsProps {
-    className?: string;
     id: string;
 }
 
@@ -37,7 +36,6 @@ const reducers: ReducersList = {
 export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const { t } = useTranslation();
     const {
-        className,
         id,
     } = props;
     const isLoading = useSelector(getArticleIsLoading);
@@ -55,11 +53,10 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     const renderBlock = useCallback(() => article?.blocks.map((block) => {
         switch (block.type) {
         case ArticleBlockType.CODE:
-            return (<ArticleCodeBlockComponent className={cls.block} key={block.id} text={block.code} />);
+            return (<ArticleCodeBlockComponent key={block.id} text={block.code} />);
         case ArticleBlockType.IMAGE:
             return (
                 <ArticleImageBlockComponent
-                    className={cls.block}
                     key={block.id}
                     src={block.src}
                     title={block.title}
@@ -68,7 +65,6 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
         case ArticleBlockType.TEXT:
             return (
                 <ArticleTextBlockComponent
-                    className={cls.block}
                     key={block.id}
                     paragraphs={block.paragraphs}
                     title={block.title}
@@ -83,98 +79,94 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
     if (isLoading) {
         content = (
-            <div className={cls.ArticleDetails}>
+            <>
+                <HStack max justify="center">
+                    <Skeleton
+                        width={200}
+                        height={200}
+                        border="50%"
+                    />
+                </HStack>
+
                 <Skeleton
-                    className={cls.avatar}
-                    width={200}
-                    height={200}
-                    border="50%"
-                />
-                <Skeleton
-                    className={cls.title}
                     width={400}
                     height={35}
                 />
                 <Skeleton
-                    className={cls.subtitle}
                     width={300}
                     height={30}
                 />
                 <Skeleton
-                    className={cls.views}
                     width={200}
                     height={20}
                 />
                 <Skeleton
-                    className={cls.dateSkeleton}
                     width={200}
                     height={20}
                 />
                 <Skeleton
-                    className={cls.block}
                     width="100%"
                     height={800}
                 />
                 <Skeleton
-                    className={cls.block}
                     width="100%"
                     height={300}
                 />
-            </div>
+            </>
         );
     } else if (error) {
         content = (
-            <Text
-                text={t('Произошла ошибка загрузки статьи')}
-                textAlign={TextAlign.CENTER}
-                size={TextSize.L}
-                theme={TextTheme.ERROR}
-            />
+            <HStack max justify="center">
+                <Text
+                    text={t('Произошла ошибка загрузки статьи')}
+                    textAlign={TextAlign.CENTER}
+                    size={TextSize.L}
+                    theme={TextTheme.ERROR}
+                />
+            </HStack>
+
         );
     } else {
         content = (
-            <div>
-                <Avatar
-                    className={cls.avatar}
-                    src={article?.img}
-                    alt={t('Аватар')}
-                    size={200}
-                />
-                <Text text={article?.title} size={TextSize.XL} className={cls.title} theme={TextTheme.PRIMARY} />
-                <Text text={article?.subtitle} size={TextSize.L} className={cls.subtitle} />
-                <div className={cls.views}>
-                    <Icon
-                        className={cls.icon}
-                        Svg={Eye}
-                        width={20}
-                        height={20}
+            <>
+                <HStack max justify="center">
+                    <Avatar
+                        src={article?.img}
+                        alt={t('Аватар')}
+                        size={200}
                     />
-                    <Text text={String(article?.views)} />
-                </div>
-                <div
-                    className={cls.date}
-                >
-                    <Icon
-                        className={cls.icon}
-                        Svg={Calendar}
-                        width={20}
-                        height={20}
-                        stroke
-                    />
-                    <Text text={article?.createdAt} />
-                </div>
-
+                </HStack>
+                <Text text={article?.title} size={TextSize.XL} theme={TextTheme.PRIMARY} />
+                <VStack max gap="8">
+                    <Text text={article?.subtitle} size={TextSize.L} />
+                    <HStack gap="10">
+                        <Icon
+                            Svg={Eye}
+                            width={20}
+                            height={20}
+                        />
+                        <Text text={String(article?.views)} />
+                    </HStack>
+                    <HStack gap="10">
+                        <Icon
+                            Svg={Calendar}
+                            width={20}
+                            height={20}
+                            stroke
+                        />
+                        <Text text={article?.createdAt} />
+                    </HStack>
+                </VStack>
                 {renderBlock()}
-
-            </div>
+            </>
         );
     }
 
     return (
         <DynamicModuleLoader reducers={reducers}>
-            <div className={classNames(cls.ArticleDetails, {}, [className])}>
+            <VStack max gap="16">
                 {content}
-            </div>
+            </VStack>
         </DynamicModuleLoader>
 
     );

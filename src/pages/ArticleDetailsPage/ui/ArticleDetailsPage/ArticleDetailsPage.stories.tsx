@@ -89,7 +89,6 @@ export default {
 const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => <ArticleDetailsPage {...args} />;
 
 export const Light = Template.bind({});
-Light.args = {};
 Light.decorators = [StoreDecorator({
     articleDetails: {
         data,
@@ -97,7 +96,6 @@ Light.decorators = [StoreDecorator({
 })];
 
 export const Dark = Template.bind({});
-Dark.args = {};
 
 Dark.decorators = [ThemeDecorator(Theme.DARK),
     StoreDecorator({
@@ -108,10 +106,17 @@ Dark.decorators = [ThemeDecorator(Theme.DARK),
 
 export const Loading = Template.bind({});
 
-Loading.args = {};
 Loading.decorators = [StoreDecorator({
     articleDetails: {
         isLoading: true,
     },
 
+})];
+
+export const Error = Template.bind({});
+
+Error.decorators = [StoreDecorator({
+    articleDetails: {
+        error: 'true',
+    },
 })];

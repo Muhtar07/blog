@@ -3,8 +3,8 @@ import { HTMLAttributeAnchorTarget, memo } from 'react';
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
-import { ArticleItemSkeleton } from 'entities/Article/ui/ArticleItemSkeleton/ArticleItemSkeleton';
 import { useTranslation } from 'react-i18next';
+import { ArticleItemSkeleton } from '../ArticleItemSkeleton/ArticleItemSkeleton';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';

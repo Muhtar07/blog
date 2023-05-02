@@ -43,6 +43,24 @@
       "userId": "1",
       "text": "bmb",
       "id": 2
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "dcdsd",
+      "id": 3
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "sdcsc",
+      "id": 4
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "sdcs",
+      "id": 5
     }
   ],
   "profile": [

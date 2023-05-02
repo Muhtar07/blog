@@ -22,6 +22,7 @@ module.exports = {
         '@typescript-eslint',
         'i18next',
         'react-hooks',
+        'muhtar-plugin',
     ],
     rules: {
         'react/jsx-indent': [2, 4],
@@ -46,7 +47,16 @@ module.exports = {
             'error',
             {
                 markupOnly: true,
-                ignoreAttribute: ['data-testid', 'to', 'name', 'target'],
+                ignoreAttribute: [
+                    'data-testid',
+                    'to',
+                    'name',
+                    'target',
+                    'justify',
+                    'align',
+                    'direction',
+                    'gap',
+                ],
             },
         ],
         'max-len': [2, { ignoreComments: true, code: 150 }],
@@ -56,6 +66,7 @@ module.exports = {
         'react-hooks/exhaustive-deps': 'error',
         'no-param-reassign': 'off',
         'no-undef': 'off',
+        'muhtar-plugin/path-checker': 'error',
     },
     globals: {
         __IS_DEV__: true,

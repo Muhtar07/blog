@@ -1,6 +1,6 @@
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk';
-import { fetchArticlesPageData } from 'pages/ArticlesPage/model/services/fetchArticlesPageData/fetchArticlesPageData';
 import { ArticleSortField, ArticleType, ArticleView } from 'entities/Article';
+import { fetchArticlesPageData } from '../fetchArticlesPageData/fetchArticlesPageData';
 import { initArticlesPage } from './initArticlesPage';
 
 jest.mock('../fetchArticlesPageData/fetchArticlesPageData');

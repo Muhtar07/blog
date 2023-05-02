@@ -1,9 +1,9 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
 import {
     ChangeEvent,
     memo, useMemo,
 } from 'react';
+import { Text, TextTheme } from '../Text/Text';
 import cls from './Select.module.scss';
 
 export interface SelectOption<T extends string> {

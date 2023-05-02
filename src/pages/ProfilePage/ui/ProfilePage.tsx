@@ -20,6 +20,7 @@ import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { useParams } from 'react-router-dom';
 import { Page } from 'widgets/Page/Page';
+import { VStack } from 'shared/ui/Stack';
 import cls from './ProfilePage.module.scss';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -101,31 +102,33 @@ const ProfilePage = memo((props: ProfilePageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <Page className={classNames(cls.ProfilePage, {}, [className])}>
-                <ProfilePageHeader />
-                {
-                    validateErrors?.length ? validateErrors.map((err) => (
-                        <Text
-                            text={validateErrorsTranslates[err]}
-                            size={TextSize.L}
-                            theme={TextTheme.ERROR}
-                            key={err}
-                        />
-                    )) : null
-                }
-                <ProfileCard
-                    form={form}
-                    isLoading={isLoading}
-                    error={error}
-                    updateFirstname={updateFirstname}
-                    updateLastname={updateLastname}
-                    readonly={readonly}
-                    updateAge={updateAge}
-                    updateUsername={updateUsername}
-                    updateCity={updateCity}
-                    updateAvatar={updateAvatar}
-                    updateCurrency={updateCurrency}
-                    updateCountry={updateCountry}
-                />
+                <VStack gap="16" max>
+                    <ProfilePageHeader />
+                    {
+                        validateErrors?.length ? validateErrors.map((err) => (
+                            <Text
+                                text={validateErrorsTranslates[err]}
+                                size={TextSize.L}
+                                theme={TextTheme.ERROR}
+                                key={err}
+                            />
+                        )) : null
+                    }
+                    <ProfileCard
+                        form={form}
+                        isLoading={isLoading}
+                        error={error}
+                        updateFirstname={updateFirstname}
+                        updateLastname={updateLastname}
+                        readonly={readonly}
+                        updateAge={updateAge}
+                        updateUsername={updateUsername}
+                        updateCity={updateCity}
+                        updateAvatar={updateAvatar}
+                        updateCurrency={updateCurrency}
+                        updateCountry={updateCountry}
+                    />
+                </VStack>
             </Page>
         </DynamicModuleLoader>
 
