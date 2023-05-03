@@ -1,7 +1,6 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { ArticleDetails, ArticleList } from 'entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
@@ -83,8 +82,8 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                 >
                     <ArticleDetails id={id || '1'} />
                     <Text
-                        text={t('Рекомендуем')}
-                        size={TextSize.XL}
+                        title={t('Рекомендуем')}
+                        size={TextSize.L}
                         theme={TextTheme.PRIMARY}
                     />
                     <HStack max>
@@ -98,8 +97,8 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
                     </HStack>
 
                     <Text
-                        text={t('Комментарии')}
-                        size={TextSize.XL}
+                        title={t('Комментарии')}
+                        size={TextSize.L}
                         theme={TextTheme.PRIMARY}
                     />
                     <AddNewCommentForArticle />

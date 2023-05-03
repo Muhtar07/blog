@@ -1,8 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
-import { Theme } from 'app/providers/ThemeProvider';
-import { Text, TextSize, TextTheme } from './Text';
+import { Text, TextSize } from './Text';
 
 export default {
     title: 'shared/Text',
@@ -14,57 +11,29 @@ export default {
 
 const Template: ComponentStory<typeof Text> = (args) => <Text {...args} />;
 
-export const TextErrorSizeM = Template.bind({
+export const TextSizeS = Template.bind({
 
 });
-TextErrorSizeM.args = {
-    text: 'TEST',
-    theme: TextTheme.ERROR,
+TextSizeS.args = {
+    title: 'Test',
+    text: 'testing',
+    size: TextSize.S,
+};
+
+export const TextSizeM = Template.bind({
+
+});
+TextSizeM.args = {
+    title: 'Test',
+    text: 'testing',
     size: TextSize.M,
 };
 
-export const TextErrorSizeL = Template.bind({
+export const TextSizeL = Template.bind({
 
 });
-TextErrorSizeL.args = {
-    text: 'TEST',
-    theme: TextTheme.ERROR,
+TextSizeL.args = {
+    title: 'Test',
+    text: 'testing',
     size: TextSize.L,
-
-};
-
-export const TextErrorSizeXL = Template.bind({
-
-});
-TextErrorSizeXL.args = {
-    text: 'TEST',
-    theme: TextTheme.ERROR,
-    size: TextSize.XL,
-
-};
-
-export const TextPrimary = Template.bind({
-
-});
-TextPrimary.args = {
-    text: 'TEST',
-    theme: TextTheme.PRIMARY,
-};
-
-export const TextPrimaryDark = Template.bind({
-
-});
-TextPrimaryDark.args = {
-    text: 'TEST',
-    theme: TextTheme.PRIMARY,
-};
-
-TextPrimaryDark.decorators = [ThemeDecorator(Theme.DARK)];
-
-export const TextSecondary = Template.bind({
-
-});
-TextSecondary.args = {
-    text: 'TEST',
-    theme: TextTheme.SECONDARY,
 };

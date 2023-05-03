@@ -42,9 +42,9 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 className={classNames('', mods, [className])}
             >
                 <Text
-                    text={error}
+                    title={error}
                     textAlign={TextAlign.CENTER}
-                    size={TextSize.XL}
+                    size={TextSize.L}
                     theme={TextTheme.ERROR}
                 />
             </div>
@@ -57,9 +57,9 @@ export const ArticleList = memo((props: ArticleListProps) => {
                 className={classNames('', mods, [className])}
             >
                 <Text
-                    text={t('Нету статей')}
+                    title={t('Нету статей')}
                     textAlign={TextAlign.LEFT}
-                    size={TextSize.XL}
+                    size={TextSize.L}
                 />
             </div>
         );

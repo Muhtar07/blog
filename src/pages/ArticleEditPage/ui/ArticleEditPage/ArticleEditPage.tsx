@@ -22,8 +22,8 @@ const ArticleEditPage = memo((props: ArticleEditPageProps) => {
     return (
         <Page className={classNames(cls.ArticleEditPage, {}, [className])}>
             {
-                id ? <Text text={t('Редатирования статьи с ID =') + id} size={TextSize.XL} />
-                    : <Text text={t('Создание новой статьи')} size={TextSize.XL} />
+                id ? <Text title={t('Редатирования статьи с ID =') + id} size={TextSize.L} />
+                    : <Text title={t('Создание новой статьи')} size={TextSize.L} />
             }
         </Page>
     );

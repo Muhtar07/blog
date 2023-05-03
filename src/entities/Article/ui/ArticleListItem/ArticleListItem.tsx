@@ -42,16 +42,16 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                 <Card className={classNames('', {}, [className, cls[ArticleView.SMALL]])}>
                     <div>
                         <img src={article.img} alt={article.title} className={cls.img} />
-                        <Text text={article.createdAt} className={cls.createdAt} />
+                        <Text size={TextSize.S} text={article.createdAt} className={cls.createdAt} />
                         <div className={cls.footer}>
                             <div className={cls.meta}>
-                                <Text className={cls.type} text={article.type.join(' ')} />
+                                <Text className={cls.type} size={TextSize.S} text={article.type.join(' ')} />
                                 <div className={cls.view}>
-                                    <Text text={String(article.views)} />
+                                    <Text size={TextSize.S} text={String(article.views)} />
                                     <Icon Svg={EyeIcon} width={20} height={20} />
                                 </div>
                             </div>
-                            <Text className={cls.title} text={article.title} size={TextSize.L} />
+                            <Text className={cls.title} title={article.title} size={TextSize.M} />
                         </div>
                     </div>
                 </Card>
@@ -77,10 +77,10 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                             />
                             <Text className={cls.username} text={article.user.username} />
                         </div>
-                        <Text text={article.createdAt} />
+                        <Text size={TextSize.M} text={article.createdAt} />
                     </div>
-                    <Text className={cls.title} text={article.title} size={TextSize.L} />
-                    <Text className={cls.type} text={article.type.join(' ')} />
+                    <Text className={cls.title} title={article.title} size={TextSize.M} />
+                    <Text size={TextSize.S} className={cls.type} text={article.type.join(' ')} />
                 </div>
                 <img src={article.img} alt={article.title} className={cls.img} />
                 { textBlock && (
@@ -101,7 +101,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
                     </AppLink>
 
                     <div className={cls.viewBig}>
-                        <Text text={String(article.views)} />
+                        <Text size={TextSize.M} text={String(article.views)} />
                         <Icon Svg={EyeIcon} width={20} height={20} className={cls.icon} />
                     </div>
                 </div>
