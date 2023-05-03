@@ -17,7 +17,6 @@ interface ListBoxProps<T extends string> {
     label?: string;
     items?: ListBoxItem<T>[];
     value?: string;
-    // eslint-disable-next-line no-unused-vars
     onChange: (value: T) => void;
     readonly?: boolean;
     defaultValue?:string
