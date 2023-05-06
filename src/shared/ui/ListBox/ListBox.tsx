@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { flip, useFloating } from '@floating-ui/react';
@@ -47,7 +47,7 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
                 onChange={onChange}
                 disabled={readonly}
             >
-                <HListBox.Button ref={refs.setReference} disabled={readonly} className={cls.trigger}>
+                <HListBox.Button as="div" ref={refs.setReference} className={cls.trigger}>
                     <MyButton disabled={readonly}>
                         {value ?? defaultValue}
                     </MyButton>
@@ -62,6 +62,7 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
                             key={value}
                             value={value}
                             disabled={disabled}
+                            as={Fragment}
                         >
                             {({ active, selected }) => (
                                 <li

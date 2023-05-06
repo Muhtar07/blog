@@ -105,7 +105,7 @@ export const Light = Template.bind({});
 Light.args = {};
 
 Light.decorators = [StoreDecorator({
-    articlesPage: {
+    articleInfiniteList: {
         ids: ['1', '2', '3', '4'],
         entities: {
             1: articles[0],

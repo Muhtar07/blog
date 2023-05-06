@@ -34,8 +34,14 @@
   "убыванию": "descending",
   "возрастанию": "ascending",
   "Создание новой статьи": "Creating a new article",
-  "Редатирования статьи с ID =": "Editing an article with ID ="
-
-
-
+  "Редатирования статьи с ID =": "Editing an article with ID =",
+  "Введите текст коментария": "Enter the comment text",
+  "Рекомендуем": "Recommended",
+  "Отправить": "Send",
+  "Комментарии": "Comments",
+  "Назад к списку": "Back to the list",
+  "Редактировать": "Edit",
+  "Аватар": "Avatar",
+  "Профиль": "Profile",
+  "Коментариев нет": "No Comments"
 }

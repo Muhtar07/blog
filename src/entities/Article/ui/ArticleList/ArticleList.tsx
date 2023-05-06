@@ -4,6 +4,7 @@ import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { Flex } from 'shared/ui/Stack/Flex/Flex';
 import { ArticleItemSkeleton } from '../ArticleItemSkeleton/ArticleItemSkeleton';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
@@ -66,8 +67,10 @@ export const ArticleList = memo((props: ArticleListProps) => {
     }
 
     return (
-        <div
+        <Flex
+            max
             className={classNames('', mods, [className])}
+            direction={view === ArticleView.BIG ? 'column' : 'row'}
         >
             {articles?.length ? articles.map((article) => (
                 <ArticleListItem
@@ -82,6 +85,6 @@ export const ArticleList = memo((props: ArticleListProps) => {
                     <ArticleItemSkeleton view={view} key={index} />
                 ))
             )}
-        </div>
+        </Flex>
     );
 });

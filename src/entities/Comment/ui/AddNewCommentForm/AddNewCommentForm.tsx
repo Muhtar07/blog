@@ -5,7 +5,7 @@ import { MyInput } from 'shared/ui/MyInput/MyInput';
 import { MyButton } from 'shared/ui/MyButton/MyButton';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 
-import { HStack } from 'shared/ui/Stack';
+import { HStack, VStack } from 'shared/ui/Stack';
 import cls from './AddNewCommentForm.module.scss';
 
 export interface AddNewCommentFormProps {
@@ -30,14 +30,14 @@ export const AddNewCommentForm = memo((props: AddNewCommentFormProps) => {
     const { t } = useTranslation();
 
     return (
-        <HStack max className={classNames(cls.AddNewCommentForm, {}, [className])}>
-            <HStack className={cls.errorContainer}>
+        <VStack max className={classNames(cls.AddNewCommentForm, {}, [className])}>
+            <VStack align="center" className={cls.errorContainer}>
                 <Text
                     text={error}
                     theme={TextTheme.ERROR}
                     size={TextSize.M}
                 />
-            </HStack>
+            </VStack>
 
             <HStack max justify="between">
                 <MyInput
@@ -53,7 +53,7 @@ export const AddNewCommentForm = memo((props: AddNewCommentFormProps) => {
                 </MyButton>
             </HStack>
 
-        </HStack>
+        </VStack>
 
     );
 });

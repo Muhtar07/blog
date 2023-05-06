@@ -6,6 +6,7 @@ import { userReducer } from 'entities/User';
 import { $api } from 'shared/api/api';
 import { scrollSaveReducer } from 'features/ScrollSave';
 import { StateSchema } from 'app/providers/StoreProvider';
+import { rtkApi } from 'shared/api/rtkApi';
 import { createReducerManager } from '../config/reducerManager';
 
 export function createReduxStore(
@@ -17,6 +18,7 @@ export function createReduxStore(
         user: userReducer,
         counter: counterReducer,
         scrollSave: scrollSaveReducer,
+        [rtkApi.reducerPath]: rtkApi.reducer,
     };
 
     const reducerManager = createReducerManager(rootReducers);
@@ -31,7 +33,7 @@ export function createReduxStore(
                     api: $api,
                 },
             },
-        }),
+        }).concat(rtkApi.middleware),
     });
 
     // @ts-ignore

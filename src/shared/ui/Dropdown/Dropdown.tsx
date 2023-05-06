@@ -5,21 +5,22 @@ import { flip, shift, useFloating } from '@floating-ui/react';
 import { AppLink } from '../AppLink/AppLink';
 import cls from './Dropdown.module.scss';
 
-export interface DropDownItem<T extends string> {
+export interface DropDownItem {
     content: ReactNode;
     disabled?: boolean;
     onClick?: () => void;
     href?: string;
+    key?: string | number;
 }
 
-interface DropdownProps<T extends string> {
+interface DropdownProps {
     className?: string;
-    items: DropDownItem<T>[];
+    items: DropDownItem[];
     trigger: ReactNode;
 
 }
 
-export function Dropdown<T extends string>(props: DropdownProps<T>) {
+export function Dropdown(props: DropdownProps) {
     const {
         className,
         items,
@@ -57,14 +58,23 @@ export function Dropdown<T extends string>(props: DropdownProps<T>) {
 
                     if (item?.href) {
                         return (
-                            <Menu.Item as={AppLink} to={item.href} disabled={item.disabled}>
+                            <Menu.Item
+                                key={item.key}
+                                as={AppLink}
+                                to={item.href}
+                                disabled={item.disabled}
+                            >
                                 {content}
                             </Menu.Item>
                         );
                     }
 
                     return (
-                        <Menu.Item as={Fragment} disabled={item.disabled}>
+                        <Menu.Item
+                            key={item.key}
+                            as={Fragment}
+                            disabled={item.disabled}
+                        >
                             {content}
                         </Menu.Item>
                     );

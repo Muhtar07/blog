@@ -61,6 +61,42 @@
       "userId": "1",
       "text": "sdcs",
       "id": 5
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "cdcs",
+      "id": 6
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "cdscsdc",
+      "id": 7
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "cdcsdcs",
+      "id": 8
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "cscdscc",
+      "id": 9
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "cscsc",
+      "id": 10
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "cdscsc",
+      "id": 11
     }
   ],
   "profile": [
@@ -68,9 +104,9 @@
       "id": "1",
       "firstname": "Мухтар",
       "lastname": "Беканов",
-      "age": 31,
-      "currency": "USD",
-      "country": "USA",
+      "age": 35,
+      "currency": "CNY",
+      "country": "Armenia",
       "city": "Moscow",
       "username": "admin",
       "avatar": "https://ddcollege.in/admin/dist/img/index.png"

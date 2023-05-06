@@ -11,8 +11,8 @@ export enum TextTheme {
 
 export enum TextSize {
     S = 'size_s',
-    M ='size_l',
-    L ='size_xl',
+    M ='size_m',
+    L ='size_l',
 }
 
 export enum TextAlign {

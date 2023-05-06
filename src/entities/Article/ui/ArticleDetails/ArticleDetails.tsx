@@ -138,7 +138,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                 <Text title={article?.title} size={TextSize.L} theme={TextTheme.PRIMARY} />
                 <VStack max gap="8">
                     <Text title={article?.subtitle} size={TextSize.M} />
-                    <HStack gap="10">
+                    <HStack gap="4">
                         <Icon
                             Svg={Eye}
                             width={20}
@@ -146,7 +146,7 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                         />
                         <Text size={TextSize.S} text={String(article?.views)} />
                     </HStack>
-                    <HStack gap="10">
+                    <HStack gap="4">
                         <Icon
                             Svg={Calendar}
                             width={20}
@@ -158,6 +158,19 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
                 </VStack>
                 {renderBlock()}
             </>
+        );
+    }
+
+    if (!id && __PROJECT__ !== 'storybook') {
+        return (
+            <HStack max justify="center" align="center">
+                <Text
+                    text={t('Статья не найдена')}
+                    theme={TextTheme.ERROR}
+                    size={TextSize.L}
+                    textAlign={TextAlign.CENTER}
+                />
+            </HStack>
         );
     }
 

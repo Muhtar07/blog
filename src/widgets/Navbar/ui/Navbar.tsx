@@ -47,10 +47,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         {
                             content: t('Профиль'),
                             href: RoutePath.profile + authData.id,
+                            key: '1',
                         },
                         {
                             content: t('Выйти'),
                             onClick: handlerLogout,
+                            key: '2',
                         },
                     ]}
                     trigger={<Avatar src={authData.avatar} size={30} />}
